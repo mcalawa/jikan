@@ -1,0 +1,19 @@
+[package]
+name = "jikan"
+version = "0.1.0"
+authors = ["Melissa Calawa <mccalawa@gmail.com>"]
+
+description = "Rust library for converting Georgian calendar dates into other calendar systems"
+homepage = "https://github.com/mcalawa/jikan"
+repository = "https://github.com/mcalawa/jikan"
+keywords = ["date", "time", "calendar", "chrono", "nengou", "gengou", 
+"nengō", "gengō", "年号", "元号", "era", "Japanese", "shinengou", 
+"shinengō", "私年号", "ginengou", "ginengō", "偽年号", "inengou", 
+"inengō", "異年号", "itsunengou", "itsunengō", "逸年号"]
+readme = "README.md"
+
+[lib]
+name = "jikan"
+
+[dependencies]
+chrono = "0.4"
