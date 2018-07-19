@@ -1,5 +1,16 @@
 # Jikan: Date and Time in Rust Beyond Just Georgian
-Jikan is a Rust library for performing conversions of Georgian calendar dates into other calendar systems. It makes use of [Chrono](https://github.com/chronotope/chrono).
+Jikan is a Rust library for performing conversions of Georgian calendar dates into other calendar systems.
+
+Resources:
+* Kang Seonghoon's [Chrono](https://github.com/chronotope/chrono)
+* Wikipedia's article on [Japanese era names](https://en.wikipedia.org/wiki/Japanese_era_name), their [list of Japanese era names](https://en.wikipedia.org/wiki/List_of_Japanese_era_names) and articles on individual eras
+* The Japanese Wikipedia's [list of Japanese era names](https://ja.wikipedia.org/wiki/%E5%85%83%E5%8F%B7%E4%B8%80%E8%A6%A7_(%E6%97%A5%E6%9C%AC)) supplemented when information was not available in English
+* Mattias Schemm's [NengoCalc](http://www.yukikurete.de/nengo_calc.htm)
+* Fourmilab's [Calendar Converter](http://www.fourmilab.ch/documents/calendar/)
+* The National Diet Library's [the Japanese Calendar](http://www.ndl.go.jp/koyomi/e/index.html)
+* The Samurai Archive's [Japanese calendar](http://wiki.samurai-archives.com/index.php?title=Japanese_calendar)
+* Wikipedia's articles on the [romanization of Japanese](https://en.wikipedia.org/wiki/Romanization_of_Japanese), [Hepburn romanization](https://en.wikipedia.org/wiki/Hepburn_romanization), [Kurei-shiki romanization](https://en.wikipedia.org/wiki/Kunrei-shiki_romanization), and [Nihon-shiki romanization](https://en.wikipedia.org/wiki/Nihon-shiki_romanization)
+* Documentation that provided examples of how solutions were implemented in other languages such as Java's [JapaneseDate](https://docs.oracle.com/javase/8/docs/api/java/time/chrono/JapaneseDate.html) and [JapaneseEra](https://docs.oracle.com/javase/8/docs/api/java/time/chrono/JapaneseEra.html), C#'s [JapaneseCalendar](https://msdn.microsoft.com/en-us/library/system.globalization.japanesecalendar(v=vs.110).aspx) and [JapaneseLunisolarCalendar](https://msdn.microsoft.com/en-us/library/system.globalization.japaneselunisolarcalendar(v=vs.110).aspx) and Microsoft's [Era Handling for the Japanese Calendar](https://docs.microsoft.com/en-us/windows/desktop/intl/era-handling-for-the-japanese-calendar)
 
 ## About This Project
 The name Jikan comes from *jikan*, or more properly 時間 or じかん, the Japanese word for time and is pronounced jeeKAHN, or [d͡ʑikã̠ɴ] in IPA. This name was chosen because the first calendar conversion Jikan is set to implement is Georgian calendar dates to dates that use the Japanese era calendar scheme. While this is being used as a starting point, the plan is for Jikan to eventually be expanded to cover other calendar systems, which is the reason a word meaning time was chosen rather than one specifically related to Japanese era names.
@@ -37,4 +48,4 @@ Because of the use of 12 29-to-30-day months leads to a year that is roughly 354
 #### *Nengō* from 1868 and Beyond
 There were several variations in the exact calendar format used prior to 1868, but all of the calendars used were lunisolar calendars with fairly similar formats. It wasn't until the beginning of the Meiji (or 明治) era in 1868 that major changes to the system were implemented.
 
-The first of these major changes was the adoption of a *issei-ichigen* (一世一元) or "one reign, one era name" system. This means that the era would only change upon the death of the old emperor and the succession of a new one. The other major change was the adoption of the Georgian calendar. With the adoption of the Georgian calendar, the first year in a *nengō* would last from the date of succession to December 31st. 
+The first of these major changes was the adoption of a *issei-ichigen* (一世一元) or "one reign, one era name" system. This means that the era would only change upon the succession of the new emperor. The other major change was the adoption of the Georgian calendar. With the adoption of the Georgian calendar, the first year in a *nengō* would last from the date of succession to December 31st. 
