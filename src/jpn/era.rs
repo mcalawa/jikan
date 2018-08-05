@@ -1070,7 +1070,38 @@ lazy_static! {
         m.insert(1748, NaiveDate::from_ymd(1748, 1, 30));
         m.insert(1749, NaiveDate::from_ymd(1749, 2, 17));
         m.insert(1750, NaiveDate::from_ymd(1750, 2, 7));
-        //Houreki 1 = 1751; Western dates are in Georgian
+        m.insert(1751, NaiveDate::from_ymd(1751, 1, 27));
+        m.insert(1752, NaiveDate::from_ymd(1752, 2, 15));
+        m.insert(1753, NaiveDate::from_ymd(1753, 2, 3));
+        m.insert(1754, NaiveDate::from_ymd(1754, 1, 23));
+        m.insert(1755, NaiveDate::from_ymd(1755, 2, 11));
+        m.insert(1756, NaiveDate::from_ymd(1756, 1, 31));
+        m.insert(1757, NaiveDate::from_ymd(1757, 2, 18));
+        m.insert(1758, NaiveDate::from_ymd(1758, 2, 8));
+        m.insert(1759, NaiveDate::from_ymd(1759, 1, 29));
+        m.insert(1760, NaiveDate::from_ymd(1760, 2, 17));
+        m.insert(1761, NaiveDate::from_ymd(1761, 2, 5));
+        m.insert(1762, NaiveDate::from_ymd(1762, 1, 25));
+        m.insert(1763, NaiveDate::from_ymd(1763, 2, 13));
+        m.insert(1764, NaiveDate::from_ymd(1764, 2, 2));
+        m.insert(1765, NaiveDate::from_ymd(1765, 2, 20));
+        m.insert(1766, NaiveDate::from_ymd(1766, 2, 9));
+        m.insert(1767, NaiveDate::from_ymd(1767, 1, 30));
+        m.insert(1768, NaiveDate::from_ymd(1768, 2, 18));
+        m.insert(1769, NaiveDate::from_ymd(1769, 2, 7));
+        m.insert(1770, NaiveDate::from_ymd(1770, 1, 27));
+        m.insert(1771, NaiveDate::from_ymd(1771, 2, 15));
+        m.insert(1772, NaiveDate::from_ymd(1772, 2, 4));
+        m.insert(1773, NaiveDate::from_ymd(1773, 1, 23));
+        m.insert(1774, NaiveDate::from_ymd(1774, 2, 11));
+        m.insert(1775, NaiveDate::from_ymd(1775, 1, 31));
+        m.insert(1776, NaiveDate::from_ymd(1776, 2, 19));
+        m.insert(1777, NaiveDate::from_ymd(1777, 2, 8));
+        m.insert(1778, NaiveDate::from_ymd(1778, 1, 28));
+        m.insert(1779, NaiveDate::from_ymd(1779, 2, 16));
+        m.insert(1780, NaiveDate::from_ymd(1780, 2, 5));
+
+        //Tenmei 1 = 1781; Western dates are in Georgian
     };
 }
 
