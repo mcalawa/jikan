@@ -1276,47 +1276,46 @@ lazy_static! {
         m.insert("嘉承", Era::new("Kajou", "嘉承", "かじょう", "Kajō", "Kazyô", NaiveDate::from_ymd(1106, 5, 20), NaiveDate::from_ymd(1108, 9, 16), 3, Court::Unified, None, None));
         m.insert("天仁", Era::new("Tennin", "天仁", "てんにん", "Tennin", "Tennin", NaiveDate::from_ymd(1108, 9, 16), NaiveDate::from_ymd(1110, 8, 7), 3, Court::Unified, None, None));
         m.insert("天永", Era::new("Ten'ei", "天永", "てんえい", "Ten'ei", "Ten'ei", NaiveDate::from_ymd(1110, 8, 7), NaiveDate::from_ymd(1113, 9, 1), 4, Court::Unified, None, None));
+        m.insert("永久", Era::new("Eikyuu", "永久", "えいきゅう", "Eikyū", "Eikyû", NaiveDate::from_ymd(1113, 9, 1), NaiveDate::from_ymd(1118, 5, 2), 6, Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(1118, 5, 2), NaiveDate::from_ymd(1120, 5, 16), 3, Court::Unified, None, None));
+// Gen'ei	元永	げんえい	Gen'ei	Gen'ei	//	//	
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(1120, 5, 16), NaiveDate::from_ymd(1124, 5, 25), 5, Court::Unified, None, None));
+// Houan	保安	ほうあん	Hōan	Hôan	//	//	
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(1124, 5, 25), NaiveDate::from_ymd(1126, 2, 22), 3, Court::Unified, None, None));
+// Tenji	天治	てんじ	Tenji	Tenzi	//	//	
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(1126, 2, 22), NaiveDate::from_ymd(1131, 3, 7), 6, Court::Unified, None, None));
+// Daiji	大治	だいじ	Daiji	Daizi	//	//	
         m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Eikyuu	永久	えいきゅう	Eikyū	Eikyû	9/1/1113	5/2/1118	6
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Gen'ei	元永	げんえい	Gen'ei	Gen'ei	5/2/1118	5/16/1120	3
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Houan	保安	ほうあん	Hōan	Hôan	5/16/1120	5/25/1124	5
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Tenji	天治	てんじ	Tenji	Tenzi	5/25/1124	2/22/1126	3
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Daiji	大治	だいじ	Daiji	Daizi	2/22/1126	3/7/1131	6
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
 // Tenjou	天承	てんじょう	Tenjō	Tenzyô	3/7/1131	9/28/1132	2
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Choushou	長承	ちょうしょう	Chōshō	Tyôsyô	9/28/1132	6/17/1135	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Houen	保延	ほうえん	Hōen	Hôen	6/17/1135	8/20/1141	7
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Eiji	永治	えいじ	Eiji	Eizi	8/20/1141	6/1/1142	2
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Kouji	康治	こうじ	Kōji	Kôzi	6/1/1142	4/4/1144	3
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Ten'you	天養	てんよう	Ten'yō	Ten'yô	4/4/1144	8/19/1145	2
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Kyuuan	久安	きゅうあん	Kyūan	Kyûan	8/19/1145	2/21/1151	7
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Ninpei	仁平	にんぺい	Ninpei	Ninpei	2/21/1151	12/21/1154	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Kyuuju	久寿	きゅうじゅ	Kyūju	Kyûzyu	12/21/1154	5/25/1156	3
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Hougen	保元	ほうげん	Hōgen	Hôgen	5/25/1156	5/16/1159	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Heiji	平治	へいじ	Heiji	Heizi	5/16/1159	2/25/1160	2
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Eiryaku	永暦	えいりゃく	Eiryaku	Eiryaku	2/25/1160	10/1/1161	2
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Ouhou	応保	おうほう	Ōhō	Ôhô	10/1/1161	5/11/1163	3
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Choukan	長寛	ちょうかん	Chōkan	Tyôkan	5/11/1163	6/21/1165	3
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Eiman	永万	えいまん	Eiman	Eiman	6/21/1165	9/30/1166	2
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
+        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Nin'an	仁安	にんあん	Nin'an	Nin'an	9/30/1166	5/13/1169	4
         m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(), NaiveDate::from_ymd(), , Court::Unified, None, None));
 // Kaou	嘉応	かおう	Kaō	Kaô	5/13/1169	5/19/1171	3
