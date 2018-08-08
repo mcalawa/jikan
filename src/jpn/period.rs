@@ -158,7 +158,7 @@ lazy_static! {
     };
 }
 
-#[derive(Eq, PartialEq, Debug)]
+#[derive(Eq, PartialEq, Debug, Hash)]
 pub struct Period {
     kana_spelling: &'static str,
     kanji: &'static str,
