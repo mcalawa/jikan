@@ -1360,7 +1360,7 @@ lazy_static! {
         m.insert("正慶", Era::new("Shoukyou", "正慶", "しょうきょう", "Shōkyō", "Syôkyô", NaiveDate::from_ymd(1332, 5, 23), NaiveDate::from_ymd(1333, 7, 15), 2, Court::North, None, None));
         //Kenmu restoration
         m.insert("建武", Era::new("Kenmu", "建武", "けんむ", "Kenmu", "Kenmu", NaiveDate::from_ymd(1334, 3, 13), NaiveDate::from_ymd(1338, 10, 19), 5, Court::Both, NaiveDate::from_ymd(1336, 4, 19), 3));
-        //Muromachi period
+        //Muromachi/Ashikaga period
         //Northern and Southern Courts period
         m.insert("延元", Era::new("Engen", "延元", "えんげん", "Engen", "Engen", NaiveDate::from_ymd(1336, 4, 19), NaiveDate::from_ymd(1340, 6, 2), 5, Court::South, None, None));
         m.insert("暦応", Era::new("Ryakuou", "暦応", "りゃくおう", "Ryakuō", "Ryakuô", NaiveDate::from_ymd(1338, 10, 19), NaiveDate::from_ymd(1342, 6, 9), 5, Court::North, None, None));
@@ -1386,6 +1386,8 @@ lazy_static! {
         m.insert("嘉慶", Era::new("Kakei", "嘉慶", "かけい", "Kakei", "Kakei", NaiveDate::from_ymd(1387, 10, 13), NaiveDate::from_ymd(1389, 3, 15), 3, Court::North, None, None));
         m.insert("康応", Era::new("Kouou", "康応", "こうおう", "Kōō", "Kôô", NaiveDate::from_ymd(1389, 3, 15), NaiveDate::from_ymd(1390, 4, 20), 2, Court::North, None, None));
         m.insert("明徳", Era::new("Meitoku", "明徳", "めいとく", "Meitoku", "Meitoku", NaiveDate::from_ymd(1390, 4, 20), NaiveDate::from_ymd(1394, 8, 10), 5, Court::Both, None, None));
+        //Courts reunify; Northern and Southern Courts period ends
+        //Muromachi/Ashikaga period continues
         m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
 // Ouei	応永	おうえい	Ōei	Ôei	8/10/1394	6/19/1428	35
         m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
