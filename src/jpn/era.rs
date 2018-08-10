@@ -1195,7 +1195,7 @@ lazy_static! {
         m
     };
 
-    static ref ERAS_FROM_KANJI: HashMap<&'static str, Era> = {
+    static ref ERAS: HashMap<&'static str, Era> = {
         let mut m = HashMap::new();
         //Asuka period
         m.insert("大化", Era::new("Taika", "大化", "たいか", "Taika", "Taika", NaiveDate::from_ymd(645, 7, 20), NaiveDate::from_ymd(650, 3, 25), 6, Court::Unified, None, None));
@@ -1206,7 +1206,6 @@ lazy_static! {
         m.insert("和銅", Era::new("Wadou", "和銅", "わどう", "Wadō", "Wadô", NaiveDate::from_ymd(708, 2, 11), NaiveDate::from_ymd(715, 10, 7), 8, Court::Unified, None, None));
         //Nara period
         m.insert("霊亀", Era::new("Reiki", "霊亀", "れいき", "Reiki", "Reiki", NaiveDate::from_ymd(715, 10, 7), NaiveDate::from_ymd(717, 12, 28), 3, Court::Unified, None, None));
-        //not yet added to ERAS
         m.insert("養老", Era::new("Yourou", "養老", "ようろう", "Yōrō", "Yôrô", NaiveDate::from_ymd(717, 12, 28), NaiveDate::from_ymd(724, 3, 27), 8, Court::Unified, None, None));
         m.insert("神亀", Era::new("Jinki", "神亀", "じんき", "Jinki", "Zinki", NaiveDate::from_ymd(724, 3, 27), NaiveDate::from_ymd(729, 9, 6), 6, Court::Unified, None, None));
         m.insert("天平", Era::new("Tenpyou", "天平", "てんぴょう", "Tenpyō", "Tenpyô", NaiveDate::from_ymd(729, 9, 6), NaiveDate::from_ymd(749, 5, 9), 21, Court::Unified, None, None));
@@ -1240,13 +1239,13 @@ lazy_static! {
         m.insert("天徳", Era::new("Tentoku", "天徳", "てんとく", "Tentoku", "Tentoku", NaiveDate::from_ymd(957, 11, 26), NaiveDate::from_ymd(961, 3, 10), 5, Court::Unified, None, None));	
         m.insert("応和", Era::new("Ouwa", "応和", "おうわ", "Ōwa", "Ôwa", NaiveDate::from_ymd(961, 3, 10), NaiveDate::from_ymd(964, 8, 24), 4, Court::Unified, None, None));	
         m.insert("康保", Era::new("Kouhou", "康保", "こうほう", "Kōhō", "Kôhô", NaiveDate::from_ymd(964, 8, 24), NaiveDate::from_ymd(968, 9, 13), 5, Court::Unified, None, None));
-        m.insert("安和", Era::new("Anna", "安和", "あんな", "Anna", "Anna", NaiveDate::from_ymd(968, 9, 13), NaiveDate::from_ymd(970, 5, 8), 3, Court::Unified, None, None));
+        m.insert("安和", Era::new("An'na", "安和", "あんな", "Anna", "Anna", NaiveDate::from_ymd(968, 9, 13), NaiveDate::from_ymd(970, 5, 8), 3, Court::Unified, None, None));
         m.insert("天禄", Era::new("Tenroku", "天禄", "てんろく", "Tenroku", "Tenroku", NaiveDate::from_ymd(970, 5, 8), NaiveDate::from_ymd(974, 1, 21), 4, Court::Unified, None, None));
         m.insert("天延", Era::new("Ten'en", "天延", "てんえん", "Ten'en", "Ten'en", NaiveDate::from_ymd(974, 1, 21), NaiveDate::from_ymd(976, 8, 16), 4, Court::Unified, None, None));	
         m.insert("貞元", Era::new("Jougen (Heian)", "貞元", "じょうげん（へいあんじだい）", "Jōgen (Heian)", "Zyôgen (Heian)", NaiveDate::from_ymd(976, 8, 16), NaiveDate::from_ymd(979, 1, 5), 3, Court::Unified, None, None));
         m.insert("天元", Era::new("Tengen", "天元", "てんげん", "Tengen", "Tengen", NaiveDate::from_ymd(979, 1, 5), NaiveDate::from_ymd(983, 6, 3), 6, Court::Unified, None, None));
         m.insert("永観", Era::new("Eikan", "永観", "えいかん", "Eikan", "Eikan", NaiveDate::from_ymd(983, 6, 3), NaiveDate::from_ymd(985, 5, 24), 3, Court::Unified, None, None));
-        m.insert("寛和", Era::new("Kanna", "寛和", "かんな", "Kanna", "Kanna", NaiveDate::from_ymd(985, 5, 24), NaiveDate::from_ymd(987, 5, 10), 3, Court::Unified, None, None));
+        m.insert("寛和", Era::new("Kan'na", "寛和", "かんな", "Kanna", "Kanna", NaiveDate::from_ymd(985, 5, 24), NaiveDate::from_ymd(987, 5, 10), 3, Court::Unified, None, None));
         m.insert("永延", Era::new("Eien", "永延", "えいえん", "Eien", "Eien", NaiveDate::from_ymd(987, 5, 10), NaiveDate::from_ymd(989, 9, 15), 3, Court::Unified, None, None));	
         m.insert("永祚", Era::new("Eiso", "永祚", "えいそ", "Eiso", "Eiso", NaiveDate::from_ymd(989, 9, 15), NaiveDate::from_ymd(990, 12, 1), 2, Court::Unified, None, None));
         m.insert("正暦", Era::new("Shouryaku", "正暦", "しょうりゃく", "Shōryaku", "Syôryaku", NaiveDate::from_ymd(990, 12, 1), NaiveDate::from_ymd(995, 3, 30), 6, Court::Unified, None, None));
@@ -1254,7 +1253,7 @@ lazy_static! {
         m.insert("長保", Era::new("Chouhou", "長保", "ちょうほう", "Chōhō", "Tyôhô", NaiveDate::from_ymd(999, 2, 6), NaiveDate::from_ymd(1004, 8, 14), 6, Court::Unified, None, None));
         m.insert("寛弘", Era::new("Kankou", "寛弘", "かんこう", "Kankō", "Kankô", NaiveDate::from_ymd(1004, 8, 14), NaiveDate::from_ymd(1013, 2, 4), 9, Court::Unified, None, None));
         m.insert("長和", Era::new("Chouwa", "長和", "ちょうわ", "Chōwa", "Tyôwa", NaiveDate::from_ymd(1013, 2, 4), NaiveDate::from_ymd(, , ), 6, Court::Unified, None, None));
-        m.insert("寛仁", Era::new("Kannin", "寛仁", "かんにん", "Kannin", "Kannin", NaiveDate::from_ymd(1017, 5, 27), NaiveDate::from_ymd(1021, 3, 23), 5, Court::Unified, None, None));
+        m.insert("寛仁", Era::new("Kan'nin", "寛仁", "かんにん", "Kannin", "Kannin", NaiveDate::from_ymd(1017, 5, 27), NaiveDate::from_ymd(1021, 3, 23), 5, Court::Unified, None, None));
         m.insert("治安", Era::new("Jian", "治安", "じあん", "Jian", "Zian", NaiveDate::from_ymd(1021, 3, 23), NaiveDate::from_ymd(1024, 8, 25), 4, Court::Unified, None, None));
         m.insert("万寿", Era::new("Manju", "万寿", "まんじゅ", "Manju", "Manzyu", NaiveDate::from_ymd(1024, 8, 25), NaiveDate::from_ymd(1028, 8, 24), 5, Court::Unified, None, None));
         m.insert("長元", Era::new("Chougen", "長元", "ちょうげん", "Chōgen", "Tyôgen", NaiveDate::from_ymd(1028, 8, 24), NaiveDate::from_ymd(1037, 5, 15), 10, Court::Unified, None, None));
@@ -1277,7 +1276,7 @@ lazy_static! {
         m.insert("康和", Era::new("Kouwa (Heian)", "康和", "こうわ（へいあんじだい）", "Kōwa (Heian)", "Kôwa (Heian)", NaiveDate::from_ymd(1099, 9, 21), NaiveDate::from_ymd(1104, 3, 15), 6, Court::Unified, None, None));
         m.insert("長治", Era::new("Chouji", "長治", "ちょうじ", "Chōji", "Tyôzi", NaiveDate::from_ymd(1104, 3, 15), NaiveDate::from_ymd(1106, 5, 20), 3, Court::Unified, None, None));
         m.insert("嘉承", Era::new("Kajou", "嘉承", "かじょう", "Kajō", "Kazyô", NaiveDate::from_ymd(1106, 5, 20), NaiveDate::from_ymd(1108, 9, 16), 3, Court::Unified, None, None));
-        m.insert("天仁", Era::new("Tennin", "天仁", "てんにん", "Tennin", "Tennin", NaiveDate::from_ymd(1108, 9, 16), NaiveDate::from_ymd(1110, 8, 7), 3, Court::Unified, None, None));
+        m.insert("天仁", Era::new("Ten'nin", "天仁", "てんにん", "Tennin", "Tennin", NaiveDate::from_ymd(1108, 9, 16), NaiveDate::from_ymd(1110, 8, 7), 3, Court::Unified, None, None));
         m.insert("天永", Era::new("Ten'ei", "天永", "てんえい", "Ten'ei", "Ten'ei", NaiveDate::from_ymd(1110, 8, 7), NaiveDate::from_ymd(1113, 9, 1), 4, Court::Unified, None, None));
         m.insert("永久", Era::new("Eikyuu", "永久", "えいきゅう", "Eikyū", "Eikyû", NaiveDate::from_ymd(1113, 9, 1), NaiveDate::from_ymd(1118, 5, 2), 6, Court::Unified, None, None));
         m.insert("元永", Era::new("Gen'ei", "元永", "げんえい", "Gen'ei", "Gen'ei", NaiveDate::from_ymd(1118, 5, 2), NaiveDate::from_ymd(1120, 5, 16), 3, Court::Unified, None, None));
@@ -1311,7 +1310,7 @@ lazy_static! {
         m.insert("文治", Era::new("Bunji", "文治", "ぶんじ", "Bunji", "Bunzi", NaiveDate::from_ymd(1185, 9, 16), NaiveDate::from_ymd(1190, 5, 23), 6, Court::Unified, None, None));
         m.insert("建久", Era::new("Kenkyuu", "建久", "けんきゅう", "Kenkyū", "Kenkyû", NaiveDate::from_ymd(1190, 5, 23), NaiveDate::from_ymd(1199, 5, 30), 10, Court::Unified, None, None));
         m.insert("正治", Era::new("Shouji", "正治", "しょうじ", "Shōji", "Syôzi", NaiveDate::from_ymd(1199, 5, 30), NaiveDate::from_ymd(1201, 3, 26), 3, Court::Unified, None, None));
-        m.insert("建仁", Era::new("Kennin", "建仁", "けんにん", "Kennin", "Kennin", NaiveDate::from_ymd(1201, 3, 26), NaiveDate::from_ymd(1204, 3, 30), 4, Court::Unified, None, None));
+        m.insert("建仁", Era::new("Ken'nin", "建仁", "けんにん", "Kennin", "Kennin", NaiveDate::from_ymd(1201, 3, 26), NaiveDate::from_ymd(1204, 3, 30), 4, Court::Unified, None, None));
         m.insert("元久", Era::new(Genkyuu"", "元久", "げんきゅう", "Genkyū", "Genkyû", NaiveDate::from_ymd(1204, 3, 30), NaiveDate::from_ymd(1206, 6, 12), 3, Court::Unified, None, None));
         m.insert("建永", Era::new("Ken'ei", "建永", "けんえい", "Ken'ei", "Ken'ei", NaiveDate::from_ymd(1206, 6, 12), NaiveDate::from_ymd(1207, 11, 23), 2, Court::Unified, None, None));
         m.insert("承元", Era::new("Jougen (Kamakura)", "承元", "じょうげん（かまくらじだい）", "Jōgen (Kamakura)", "Zyôgen (Kamakura)", NaiveDate::from_ymd(1207, 11, 23), NaiveDate::from_ymd(1211, 4, 30), 5, Court::Unified, None, None));
@@ -1319,7 +1318,7 @@ lazy_static! {
         m.insert("建保", Era::new("Kenpou", "建保", "けんぽう", "Kenpō", "Kenpô", NaiveDate::from_ymd(1214, 1, 25), NaiveDate::from_ymd(1219, 6, 3), 7, Court::Unified, None, None));
         m.insert("承久", Era::new("Joukyuu", "承久", "じょうきゅう", "Jōkyū", "Zyôkyû", NaiveDate::from_ymd(1219, 6, 3), NaiveDate::from_ymd(1222, 6, 1), 4, Court::Unified, None, None));
         m.insert("貞応", Era::new("Jouou (Kamakura)", "貞応", "じょうおう（かまくらじだい）", "Jōō (Kamakura)", "Zyôô (Kamakura)", NaiveDate::from_ymd(1222, 6, 1), NaiveDate::from_ymd(1225, 1, 7), 3, Court::Unified, None, None));
-        m.insert("元仁", Era::new("Gennin", "元仁", "げんにん", "Gennin", "Gennin", NaiveDate::from_ymd(1225, 1, 7), NaiveDate::from_ymd(1125, 6, 4), 2, Court::Unified, None, None));
+        m.insert("元仁", Era::new("Gen'nin", "元仁", "げんにん", "Gennin", "Gennin", NaiveDate::from_ymd(1225, 1, 7), NaiveDate::from_ymd(1125, 6, 4), 2, Court::Unified, None, None));
         m.insert("嘉禄", Era::new("Karoku", "嘉禄", "かろく", "Karoku", "Karoku", NaiveDate::from_ymd(1125, 6, 4), NaiveDate::from_ymd(1228, 1, 25), 3, Court::Unified, None, None));
         m.insert("安貞", Era::new("Antei", "安貞", "あんてい", "Antei", "Antei", NaiveDate::from_ymd(1228, 1, 25), NaiveDate::from_ymd(1229, 4, 7), 3, Court::Unified, None, None));
         m.insert("寛喜", Era::new("Kanki", "寛喜", "かんき", "Kanki", "Kanki", NaiveDate::from_ymd(1229, 4, 7), NaiveDate::from_ymd(1232, 4, 30), 4, Court::Unified, None, None));
@@ -1368,8 +1367,8 @@ lazy_static! {
         m.insert("康永", Era::new("Kouei", "康永", "こうえい", "Kōei", "Kôei", NaiveDate::from_ymd(1342, 6, 9), NaiveDate::from_ymd(1345, 11, 23), 4, Court::North, None, None));
         m.insert("貞和", Era::new("Teiwa", "貞和", "ていわ", "Teiwa", "Teiwa", NaiveDate::from_ymd(1345, 11, 23), NaiveDate::from_ymd(1350, 4, 12), 6, Court::North, None, None));
         m.insert("正平", Era::new("Shouhei", "正平", "しょうへい", "Shōhei", "Syôhei", NaiveDate::from_ymd(1347, 1, 28), NaiveDate::from_ymd(1370, 8, 24), 25, Court::South, None, None));
-        m.insert("観応", Era::new("Kannou", "観応", "かんのう", "Kannō", "Kannô", NaiveDate::from_ymd(1350, 4, 12), NaiveDate::from_ymd(1352, 11, 12), 3, Court::North, None, None));
-        m.insert("文和", Era::new("Bunna", "文和", "ぶんな", "Bunna", "Bunna", NaiveDate::from_ymd(1352, 11, 12), NaiveDate::from_ymd(1356, 5, 7), 5, Court::North, None, None));
+        m.insert("観応", Era::new("Kan'nou", "観応", "かんのう", "Kannō", "Kannô", NaiveDate::from_ymd(1350, 4, 12), NaiveDate::from_ymd(1352, 11, 12), 3, Court::North, None, None));
+        m.insert("文和", Era::new("Bun'na", "文和", "ぶんな", "Bunna", "Bunna", NaiveDate::from_ymd(1352, 11, 12), NaiveDate::from_ymd(1356, 5, 7), 5, Court::North, None, None));
         m.insert("延文", Era::new("Enbun", "延文", "えんぶん", "Enbun", "Enbun", NaiveDate::from_ymd(1356, 5, 7), NaiveDate::from_ymd(1361, 5, 12), 6, Court::North, None, None));
         m.insert("康安", Era::new("Kouan (Muromachi)", "康安", "こうあん（むろまちじだい）", "Kōan (Muromachi)", "Kôan (Muromati)", NaiveDate::from_ymd(1361, 5, 12), NaiveDate::from_ymd(1362, 10, 19), 2, Court::North, None, None));
         m.insert("貞治", Era::new("Jouji", "貞治", "じょうじ", "Jōji", "Zyôzi", NaiveDate::from_ymd(1362, 10, 19), NaiveDate::from_ymd(1368, 3, 15), 7, Court::North, None, None));
@@ -1388,184 +1387,77 @@ lazy_static! {
         m.insert("明徳", Era::new("Meitoku", "明徳", "めいとく", "Meitoku", "Meitoku", NaiveDate::from_ymd(1390, 4, 20), NaiveDate::from_ymd(1394, 8, 10), 5, Court::Both, None, None));
         //Courts reunify; Northern and Southern Courts period ends
         //Muromachi/Ashikaga period continues
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Ouei	応永	おうえい	Ōei	Ôei	8/10/1394	6/19/1428	35
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Shouchou	正長	しょうちょう	Shōchō	Syôtyô	6/19/1428	10/12/1429	2
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Eikyou	永享	えいきょう	Eikyō	Eikyô	10/12/1429	3/19/1441	13
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kakitsu	嘉吉	かきつ	Kakitsu	Kakitu	3/19/1441	3/3/1441	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Bun'an	文安	ぶんあん	Bun'an	Bun'an	3/3/1444	8/25/1449	6
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Houtoku	宝徳	ほうとく	Hōtoku	Hôtoku	8/25/1449	8/19/1452	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kyoutoku	享徳	きょうとく	Kyōtoku	Kyôtoku	8/19/1452	9/15/1455	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Koushou	康正	こうしょう	Kōshō	Kôsyô	9/15/1455	10/25/1457	3
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Chouroku	長禄	ちょうろく	Chōroku	Tyôroku	10/25/1457	2/10/1461	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kanshou	寛正	かんしょう	Kanshō	Kansyô	2/10/1461	3/23/1466	7
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Bunshou	文正	ぶんしょう	Bunshō	Bunsyô	3/23/1466	4/18/1467	2
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Ounin	応仁	おうにん	Ōnin	Ônin	4/18/1467	6/17/1469	3
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Bunmei	文明	ぶんめい	Bunmei	Bunmei	6/17/1469	8/18/1487	19
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Choukyou	長享	ちょうきょう	Chōkyō	Tyôkyô	8/18/1487	9/25/1489	3
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Entoku	延徳	えんとく	Entoku	Entoku	9/25/1489	8/21/1492	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Meiou	明応	めいおう	Meiō	Meiô	8/21/1492	3/28/1501	10
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Bunki	文亀	ぶんき	Bunki	Bunki	3/28/1501	3/26/1504	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Eishou	永正	えいしょう	Eishō	Eisyô	3/26/1504	10/3/1521	18
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Daiei	大永	だいえい	Daiei	Daiei	10/3/1521	9/13/1528	8
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kyouroku	享禄	きょうろく	Kyōroku	Kyôroku	9/13/1528	9/8/1532	5
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Tenbun	天文	てんぶん	Tenbun	Tenbun	9/8/1532	11/17/1555	24
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kouji	弘治	こうじ	Kōji	Kôzi	11/17/1555	3/28/1558	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Eiroku	永禄	えいろく	Eiroku	Eiroku	3/28/1558	6/6/1570	13
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Genki	元亀	げんき	Genki	Genki	6/6/1570	9/4/1573	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Tenshou	天正	てんしょう	Tenshō	Tensyô	9/4/1573	1/10/1593	20
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Bunroku	文禄	ぶんろく	Bunroku	Bunroku	1/10/1593	12/16/1596	5
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Keichou	慶長	けいちょう	Keichō	Keityô	12/16/1596	9/5/1615	20
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Gen'na	元和	げんな	Genna	Genna	9/5/1615	4/17/1624	10
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kan'ei	寛永	かんえい	Kan'ei	Kan'ei	4/17/1624	1/13/1645	21
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Shouhou	正保	しょうほう	Shōhō	Syôhô	1/13/1645	4/7/1648	5
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Keian	慶安	けいあん	Keian	Keian	4/7/1648	10/20/1652	5
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Jouou	承応	じょうおう	Jōō	Zyôô	10/20/1652	5/18/1655	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Meireki	明暦	めいれき	Meireki	Meireki	5/18/1655	8/21/1658	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Manju	万治	まんじ	Manju	Manzyu	8/21/1658	5/23/1661	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kanbun	寛文	かんぶん	Kanbun	Kanbun	5/23/1661	10/30/1673	13
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Enpou	延宝	えんぽう	Enpō	Enpô	10/30/1673	11/9/1681	9
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Ten'na	天和	てんな	Tenna	Tenna	11/9/1681	4/5/1684	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Joukyou	貞享	じょうきょう	Jōkyō	Zyôkyô	4/5/1684	10/23/1688	5
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Genroku	元禄	げんろく	Genroku	Genroku	10/23/1688	4/16/1704	17
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Houei	宝永	ほうえい	Hōei	Hôei	4/16/1704	6/11/1711	8
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Shoutoku	正徳	しょうとく	Shōtoku	Syôtoku	6/11/1711	8/9/1716	6
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kyouhou	享保	きょうほう	Kyōhō	Kyôhô	8/9/1716	6/7/1736	21
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Genbun	元文	げんぶん	Genbun	Genbun	6/7/1736	4/12/1741	6
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kanpou	寛保	かんぽう	Kapō	Kapô	4/12/1741	4/13/1744	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Enkyou	延享	えんきょう	Enkyō	Enkyô	4/13/1744	8/5/1748	5
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kan'en	寛延	かんえん	Kan'en	Kan'en	8/5/1748	12/14/1751	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Houreki	宝暦	ほうれき	Hōreki	Hôreki	12/14/1751	6/30/1764	14
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Meiwa	明和	めいわ	Meiwa	Meiwa	6/30/1764	12/10/1772	9
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// An'ei	安永	あんえい	An'ei	An'ei	12/10/1772	4/25/1781	10
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Tenmei	天明	てんめい	Tenmei	Tenmei	4/25/1781	2/19/1789	9
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kansei	寛政	かんせい	Kansei	Kansei	2/19/1789	3/19/1801	13
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kyouwa	享和	きょうわ	Kyōwa	Kyôwa	3/19/1801	3/22/1804	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Bunka	文化	ぶんか	Bunka	Bunka	3/22/1804	5/26/1818	15
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Bunsei	文政	ぶんせい	Bunsei	Bunsei	5/26/1818	1/23/1831	13
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Tenpou	天保	てんぽう	Tenpō	Tenpô	1/23/1831	1/9/1845	15
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kouka	弘化	こうか	Kōka	Kôka	1/9/1845	4/1/1848	5
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Kaei	嘉永	かえい	Kaei	Kaei	4/1/1848	1/15/1855	7
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Ansei	安政	あんせい	Ansei	Ansei	1/15/1855	4/8/1860	7
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Man'en	万延	まんえん	Man'en	Man'en	4/8/1860	3/29/1861	2
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Bunkyuu	文久	ぶんきゅう	Bunkyū	Bunkyû	3/29/1861	3/27/1864	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Genji	元治	げんじ	Genji	Genzi	3/27/1864	5/1/1865	2
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Keiou	慶応	けいおう	Keiō	Keiô	5/1/1865	10/23/1868	4
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Meiji	明治	めいじ	Meiji	Meizi	10/23/1868	07/29/1912	45
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Taishou	大正	たいしょう	Taishō	Taisyô	07/30/1912	12/24/1926	15
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Shouwa	昭和	しょうわ	Shōwa	Syôwa	12/25/1926	01/07/1989	64
-        m.insert("", Era::new("", "", "", "", "", NaiveDate::from_ymd(, , ), NaiveDate::from_ymd(, , ), , Court::Unified, None, None));
-// Heisei	平成	へいせい	Heisei	Heisei	01/08/1989	04/30/2019	31
-        m
-    };
-
-    static ref ERAS: HashMap<(&Period, &'static str), Era> = {
-        let mut m = HashMap::new();
-        m.insert((Period::from_str("asuka"), "taika"), Era::new("Taika", "大化", "たいか", "Taika", "Taika", NaiveDate::from_ymd(645, 7, 20), NaiveDate::from_ymd(650, 3, 25), 6, Court::Unified));
-        m.insert((Period::from_str("asuka"), "たいか"), Era::new("Taika", "大化", "たいか", "Taika", "Taika", NaiveDate::from_ymd(645, 7, 20), NaiveDate::from_ymd(650, 3, 25), 6, Court::Unified));
-        m.insert((Period::from_str("asuka"), "hakuchi"), Era::new("Hakuchi", "白雉", "はくち", "Hakuchi", "Hakuti", NaiveDate::from_ymd(650, 3, 25), NaiveDate::from_ymd(654, 11, 27), 5, Court::Unified));
-        m.insert((Period::from_str("asuka"), "hakuti"), Era::new("Hakuchi", "白雉", "はくち", "Hakuchi", "Hakuti", NaiveDate::from_ymd(650, 3, 25), NaiveDate::from_ymd(654, 11, 27), 5, Court::Unified));
-        m.insert((Period::from_str("asuka"), "はくち"), Era::new("Hakuchi", "白雉", "はくち", "Hakuchi", "Hakuti", NaiveDate::from_ymd(650, 3, 25), NaiveDate::from_ymd(654, 11, 27), 5, Court::Unified));
-        m.insert((Period::from_str("asuka"), "shuchou"), Era::new("Shuchou", "朱鳥", "しゅちょう", "Shuchō", "Syutyô", NaiveDate::from_ymd(686, 8, 17), NaiveDate::from_ymd(686, 10, 4), 1, Court::Unified));
-        m.insert((Period::from_str("asuka"), "shucho"), Era::new("Shuchou", "朱鳥", "しゅちょう", "Shuchō", "Syutyô", NaiveDate::from_ymd(686, 8, 17), NaiveDate::from_ymd(686, 10, 4), 1, Court::Unified));
-        m.insert((Period::from_str("asuka"), "shuchō"), Era::new("Shuchou", "朱鳥", "しゅちょう", "Shuchō", "Syutyô", NaiveDate::from_ymd(686, 8, 17), NaiveDate::from_ymd(686, 10, 4), 1, Court::Unified));
-        m.insert((Period::from_str("asuka"), "syutyô"), Era::new("Shuchou", "朱鳥", "しゅちょう", "Shuchō", "Syutyô", NaiveDate::from_ymd(686, 8, 17), NaiveDate::from_ymd(686, 10, 4), 1, Court::Unified));
-        m.insert((Period::from_str("asuka"), "しゅちょう"), Era::new("Shuchou", "朱鳥", "しゅちょう", "Shuchō", "Syutyô", NaiveDate::from_ymd(686, 8, 17), NaiveDate::from_ymd(686, 10, 4), 1, Court::Unified));
-        m.insert((Period::from_str("asuka"), "suchou"), Era::new("Shuchou", "朱鳥", "しゅちょう", "Shuchō", "Syutyô", NaiveDate::from_ymd(686, 8, 17), NaiveDate::from_ymd(686, 10, 4), 1, Court::Unified));
-        m.insert((Period::from_str("asuka"), "sucho"), Era::new("Shuchou", "朱鳥", "しゅちょう", "Shuchō", "Syutyô", NaiveDate::from_ymd(686, 8, 17), NaiveDate::from_ymd(686, 10, 4), 1, Court::Unified));
-        m.insert((Period::from_str("asuka"), "suchō"), Era::new("Shuchou", "朱鳥", "しゅちょう", "Shuchō", "Syutyô", NaiveDate::from_ymd(686, 8, 17), NaiveDate::from_ymd(686, 10, 4), 1, Court::Unified));
-        m.insert((Period::from_str("asuka"), "sutyô"), Era::new("Shuchou", "朱鳥", "しゅちょう", "Shuchō", "Syutyô", NaiveDate::from_ymd(686, 8, 17), NaiveDate::from_ymd(686, 10, 4), 1, Court::Unified));
-        m.insert((Period::from_str("asuka"), "すちょう"), Era::new("Shuchou", "朱鳥", "しゅちょう", "Shuchō", "Syutyô", NaiveDate::from_ymd(686, 8, 17), NaiveDate::from_ymd(686, 10, 4), 1, Court::Unified));
-        m.insert((Period::from_str("asuka"), "akamidori"), Era::new("Shuchou", "朱鳥", "しゅちょう", "Shuchō", "Syutyô", NaiveDate::from_ymd(686, 8, 17), NaiveDate::from_ymd(686, 10, 4), 1, Court::Unified));
-        m.insert((Period::from_str("asuka"), "あかみどり"), Era::new("Shuchou", "朱鳥", "しゅちょう", "Shuchō", "Syutyô", NaiveDate::from_ymd(686, 8, 17), NaiveDate::from_ymd(686, 10, 4), 1, Court::Unified));
-        m.insert((Period::from_str("asuka"), "taihou"), Era::new("Taihou", "大宝", "たいほう", "Taihō", "Taihô", NaiveDate::from_ymd(701, 5, 7), NaiveDate::from_ymd(704, 6, 20), 4, Court::Unified));
-        m.insert((Period::from_str("asuka"), "taiho"), Era::new("Taihou", "大宝", "たいほう", "Taihō", "Taihô", NaiveDate::from_ymd(701, 5, 7), NaiveDate::from_ymd(704, 6, 20), 4, Court::Unified));
-        m.insert((Period::from_str("asuka"), "daihou"), Era::new("Taihou", "大宝", "たいほう", "Taihō", "Taihô", NaiveDate::from_ymd(701, 5, 7), NaiveDate::from_ymd(704, 6, 20), 4, Court::Unified));
-        m.insert((Period::from_str("asuka"), "daiho"), Era::new("Taihou", "大宝", "たいほう", "Taihō", "Taihô", NaiveDate::from_ymd(701, 5, 7), NaiveDate::from_ymd(704, 6, 20), 4, Court::Unified));
-        m.insert((Period::from_str("asuka"), "taihō"), Era::new("Taihou", "大宝", "たいほう", "Taihō", "Taihô", NaiveDate::from_ymd(701, 5, 7), NaiveDate::from_ymd(704, 6, 20), 4, Court::Unified));
-        m.insert((Period::from_str("asuka"), "daihō"), Era::new("Taihou", "大宝", "たいほう", "Taihō", "Taihô", NaiveDate::from_ymd(701, 5, 7), NaiveDate::from_ymd(704, 6, 20), 4, Court::Unified));
-        m.insert((Period::from_str("asuka"), "taihô"), Era::new("Taihou", "大宝", "たいほう", "Taihō", "Taihô", NaiveDate::from_ymd(701, 5, 7), NaiveDate::from_ymd(704, 6, 20), 4, Court::Unified));
-        m.insert((Period::from_str("asuka"), "daihô"), Era::new("Taihou", "大宝", "たいほう", "Taihō", "Taihô", NaiveDate::from_ymd(701, 5, 7), NaiveDate::from_ymd(704, 6, 20), 4, Court::Unified));
-        m.insert((Period::from_str("asuka"), "たいほう"), Era::new("Taihou", "大宝", "たいほう", "Taihō", "Taihô", NaiveDate::from_ymd(701, 5, 7), NaiveDate::from_ymd(704, 6, 20), 4, Court::Unified));
-        m.insert((Period::from_str("asuka"), "だいほう"), Era::new("Taihou", "大宝", "たいほう", "Taihō", "Taihô", NaiveDate::from_ymd(701, 5, 7), NaiveDate::from_ymd(704, 6, 20), 4, Court::Unified));
-        m.insert((Period::from_str("asuka"), "keiun"), Era::new("Keiun", "慶雲", "けいうん", "Keiun", "Keiun", NaiveDate::from_ymd(704, 6, 20), NaiveDate::from_ymd(708, 2, 11), 5, Court::Unified));
-        m.insert((Period::from_str("asuka"), "けいうん"), Era::new("Keiun", "慶雲", "けいうん", "Keiun", "Keiun", NaiveDate::from_ymd(704, 6, 20), NaiveDate::from_ymd(708, 2, 11), 5, Court::Unified));
-        m.insert((Period::from_str("asuka"), "kyouun"), Era::new("Keiun", "慶雲", "けいうん", "Keiun", "Keiun", NaiveDate::from_ymd(704, 6, 20), NaiveDate::from_ymd(708, 2, 11), 5, Court::Unified));
-        m.insert((Period::from_str("asuka"), "kyo'un"), Era::new("Keiun", "慶雲", "けいうん", "Keiun", "Keiun", NaiveDate::from_ymd(704, 6, 20), NaiveDate::from_ymd(708, 2, 11), 5, Court::Unified));
-        m.insert((Period::from_str("asuka"), "kyōun"), Era::new("Keiun", "慶雲", "けいうん", "Keiun", "Keiun", NaiveDate::from_ymd(704, 6, 20), NaiveDate::from_ymd(708, 2, 11), 5, Court::Unified));
-        m.insert((Period::from_str("asuka"), "kyôun"), Era::new("Keiun", "慶雲", "けいうん", "Keiun", "Keiun", NaiveDate::from_ymd(704, 6, 20), NaiveDate::from_ymd(708, 2, 11), 5, Court::Unified));
-        m.insert((Period::from_str("asuka"), "きょううん"), Era::new("Keiun", "慶雲", "けいうん", "Keiun", "Keiun", NaiveDate::from_ymd(704, 6, 20), NaiveDate::from_ymd(708, 2, 11), 5, Court::Unified));
-        m.insert((Period::from_str("asuka"), "wadou"), Era::new("Wadou", "和銅", "わどう", "Wadō", "Wadô", NaiveDate::from_ymd(708, 2, 11), NaiveDate::from_ymd(715, 10, 7), 8, Court::Unified));
-        m.insert((Period::from_str("asuka"), "wado"), Era::new("Wadou", "和銅", "わどう", "Wadō", "Wadô", NaiveDate::from_ymd(708, 2, 11), NaiveDate::from_ymd(715, 10, 7), 8, Court::Unified));
-        m.insert((Period::from_str("asuka"), "wadō"), Era::new("Wadou", "和銅", "わどう", "Wadō", "Wadô", NaiveDate::from_ymd(708, 2, 11), NaiveDate::from_ymd(715, 10, 7), 8, Court::Unified));
-        m.insert((Period::from_str("asuka"), "wadô"), Era::new("Wadou", "和銅", "わどう", "Wadō", "Wadô", NaiveDate::from_ymd(708, 2, 11), NaiveDate::from_ymd(715, 10, 7), 8, Court::Unified));
-        m.insert((Period::from_str("asuka"), "わどう"), Era::new("Wadou", "和銅", "わどう", "Wadō", "Wadô", NaiveDate::from_ymd(708, 2, 11), NaiveDate::from_ymd(715, 10, 7), 8, Court::Unified));
-        m.insert((Period::from_str("nara"), "reiki"), Era::new("Reiki", "霊亀", "れいき", "Reiki", "Reiki", NaiveDate::from_ymd(715, 10, 7), NaiveDate::from_ymd(717, 12, 28), 3, Court::Unified));
-        m.insert((Period::from_str("nara"), "れいき"), Era::new("Reiki", "霊亀", "れいき", "Reiki", "Reiki", NaiveDate::from_ymd(715, 10, 7), NaiveDate::from_ymd(717, 12, 28), 3, Court::Unified));
+        m.insert("応永", Era::new("Ouei", "応永", "おうえい", "Ōei", "Ôei", NaiveDate::from_ymd(1394, 8, 10), NaiveDate::from_ymd(1428, 6, 19), 35, Court::Unified, None, None));
+        m.insert("正長", Era::new("Shouchou", "正長", "しょうちょう", "Shōchō", "Syôtyô", NaiveDate::from_ymd(1428, 6, 19), NaiveDate::from_ymd(1429, 10, 12), 2, Court::Unified, None, None));
+        m.insert("永享", Era::new("Eikyou", "永享", "えいきょう", "Eikyō", "Eikyô", NaiveDate::from_ymd(1429, 10, 12), NaiveDate::from_ymd(1441, 3, 19), 13, Court::Unified, None, None));
+        m.insert("嘉吉", Era::new("Kakitsu", "嘉吉", "かきつ", "Kakitsu", "Kakitu", NaiveDate::from_ymd(1441, 3, 19), NaiveDate::from_ymd(1444, 3, 3), 4, Court::Unified, None, None));
+        m.insert("文安", Era::new("Bun'an", "文安", "ぶんあん", "Bun'an", "Bun'an", NaiveDate::from_ymd(1444, 3, 3), NaiveDate::from_ymd(1449, 8, 25), 6, Court::Unified, None, None));
+        m.insert("宝徳", Era::new("Houtoku", "宝徳", "ほうとく", "Hōtoku", "Hôtoku", NaiveDate::from_ymd(1449, 8, 25), NaiveDate::from_ymd(1452, 8, 19), 4, Court::Unified, None, None));
+        m.insert("享徳", Era::new("Kyoutoku", "享徳", "きょうとく", "Kyōtoku", "Kyôtoku", NaiveDate::from_ymd(1452, 8, 19), NaiveDate::from_ymd(1455, 9, 15), 4, Court::Unified, None, None));
+        m.insert("康正", Era::new("Koushou", "康正", "こうしょう", "Kōshō", "Kôsyô", NaiveDate::from_ymd(1455, 9, 15), NaiveDate::from_ymd(1457, 10, 25), 3, Court::Unified, None, None));
+        m.insert("長禄", Era::new("Chouroku", "長禄", "ちょうろく", "Chōroku", "Tyôroku", NaiveDate::from_ymd(1457, 10, 25), NaiveDate::from_ymd(1461, 2, 10), 4, Court::Unified, None, None));
+        m.insert("寛正", Era::new("Kanshou", "寛正", "かんしょう", "Kanshō", "Kansyô", NaiveDate::from_ymd(1461, 2, 10), NaiveDate::from_ymd(1466, 3, 23), 7, Court::Unified, None, None));
+        m.insert("文正", Era::new("Bunshou", "文正", "ぶんしょう", "Bunshō", "Bunsyô", NaiveDate::from_ymd(1466, 3, 23), NaiveDate::from_ymd(1467, 4, 18), 2, Court::Unified, None, None));
+        //Sengoku/Warring States period
+        //Muromachi/Ashikaga period continues
+        m.insert("応仁", Era::new("Ounin", "応仁", "おうにん", "Ōnin", "Ônin", NaiveDate::from_ymd(1467, 4, 18), NaiveDate::from_ymd(1469, 6, 17), 3, Court::Unified, None, None));
+        m.insert("文明", Era::new("Bunmei", "文明", "ぶんめい", "Bunmei", "Bunmei", NaiveDate::from_ymd(1469, 6, 17), NaiveDate::from_ymd(1487, 8, 18), 19, Court::Unified, None, None));
+        m.insert("長享", Era::new("Choukyou", "長享", "ちょうきょう", "Chōkyō", "Tyôkyô", NaiveDate::from_ymd(1487, 8, 18), NaiveDate::from_ymd(1489, 9, 25), 3, Court::Unified, None, None));
+        m.insert("延徳", Era::new("Entoku", "延徳", "えんとく", "Entoku", "Entoku", NaiveDate::from_ymd(1489, 9, 25), NaiveDate::from_ymd(1492, 8, 21), 4, Court::Unified, None, None));
+        m.insert("明応", Era::new("Meiou", "明応", "めいおう", "Meiō", "Meiô", NaiveDate::from_ymd(1492, 8, 21), NaiveDate::from_ymd(1501, 3, 28), 10, Court::Unified, None, None));
+        m.insert("文亀", Era::new("Bunki", "文亀", "ぶんき", "Bunki", "Bunki", NaiveDate::from_ymd(1501, 3, 28), NaiveDate::from_ymd(1504, 3, 26), 4, Court::Unified, None, None));
+        m.insert("永正", Era::new("Eishou", "永正", "えいしょう", "Eishō", "Eisyô", NaiveDate::from_ymd(1504, 3, 26), NaiveDate::from_ymd(1521, 10, 3), 18, Court::Unified, None, None));
+        m.insert("大永", Era::new("Daiei", "大永", "だいえい", "Daiei", "Daiei", NaiveDate::from_ymd(1521, 10, 3), NaiveDate::from_ymd(1528, 9, 13), 8, Court::Unified, None, None));
+        m.insert("享禄", Era::new("Kyouroku", "享禄", "きょうろく", "Kyōroku", "Kyôroku", NaiveDate::from_ymd(1528, 9, 13), NaiveDate::from_ymd(1532, 9, 8), 5, Court::Unified, None, None));
+        m.insert("天文", Era::new("Tenbun", "天文", "てんぶん", "Tenbun", "Tenbun", NaiveDate::from_ymd(1532, 9, 8), NaiveDate::from_ymd(1555, 11, 17), 24, Court::Unified, None, None));
+        m.insert("弘治", Era::new("Kouji (Muromachi)", "弘治", "こうじ（むろまちじだい）", "Kōji (Muromachi)", "Kôzi (Muromati)", NaiveDate::from_ymd(1555, 11, 17), NaiveDate::from_ymd(1558, 3, 28), 4, Court::Unified, None, None));
+        m.insert("永禄", Era::new("Eiroku", "永禄", "えいろく", "Eiroku", "Eiroku", NaiveDate::from_ymd(1558, 3, 28), NaiveDate::from_ymd(1570, 6, 6), 13, Court::Unified, None, None));
+        m.insert("元亀", Era::new("Genki", "元亀", "げんき", "Genki", "Genki", NaiveDate::from_ymd(1570, 6, 6), NaiveDate::from_ymd(1573, 9, 4), 4, Court::Unified, None, None));
+        //Azuchi-Momoyama period
+        m.insert("天正", Era::new("Tenshou", "天正", "てんしょう", "Tenshō", "Tensyô", NaiveDate::from_ymd(1573, 9, 4), NaiveDate::from_ymd(1593, 1, 10), 20, Court::Unified, None, None));
+        m.insert("文禄", Era::new("Bunroku", "文禄", "ぶんろく", "Bunroku", "Bunroku", NaiveDate::from_ymd(1593, 1, 10), NaiveDate::from_ymd(1596, 12, 16), 5, Court::Unified, None, None));
+        m.insert("慶長", Era::new("Keichou", "慶長", "けいちょう", "Keichō", "Keityô", NaiveDate::from_ymd(1596, 12, 16), NaiveDate::from_ymd(1615, 9, 5), 20, Court::Unified, None, None));
+        //Edo/Tokugawa period
+        m.insert("元和", Era::new("Gen'na", "元和", "げんな", "Genna", "Genna", NaiveDate::from_ymd(1615, 9, 5), NaiveDate::from_ymd(1624, 4, 17), 10, Court::Unified, None, None));
+        m.insert("寛永", Era::new("Kan'ei", "寛永", "かんえい", "Kan'ei", "Kan'ei", NaiveDate::from_ymd(1624, 4, 17), NaiveDate::from_ymd(1645, 1, 13), 21, Court::Unified, None, None));
+        m.insert("正保", Era::new("Shouhou", "正保", "しょうほう", "Shōhō", "Syôhô", NaiveDate::from_ymd(1645, 1, 13), NaiveDate::from_ymd(1648, 4, 7), 5, Court::Unified, None, None));
+        m.insert("慶安", Era::new("Keian", "慶安", "けいあん", "Keian", "Keian", NaiveDate::from_ymd(1648, 4, 7), NaiveDate::from_ymd(1652, 10, 20), 5, Court::Unified, None, None));
+        m.insert("承応", Era::new("Jouou (Edo)", "承応", "じょうおう（えどじだい）", "Jōō (Edo)", "Zyôô (Edo)", NaiveDate::from_ymd(1652, 10, 20), NaiveDate::from_ymd(1655, 5, 18), 4, Court::Unified, None, None));
+        m.insert("明暦", Era::new("Meireki", "明暦", "めいれき", "Meireki", "Meireki", NaiveDate::from_ymd(1655, 5, 18), NaiveDate::from_ymd(1658, 8, 21), 4, Court::Unified, None, None));
+        m.insert("万治", Era::new("Manji", "万治", "まんじ", "Manji", "Manzi", NaiveDate::from_ymd(1658, 8, 21), NaiveDate::from_ymd(1661, 5, 23), 4, Court::Unified, None, None));
+        m.insert("寛文", Era::new("Kanbun", "寛文", "かんぶん", "Kanbun", "Kanbun", NaiveDate::from_ymd(1661, 5, 23), NaiveDate::from_ymd(1673, 10, 30), 13, Court::Unified, None, None));
+        m.insert("延宝", Era::new("Enpou", "延宝", "えんぽう", "Enpō", "Enpô", NaiveDate::from_ymd(1673, 10, 30), NaiveDate::from_ymd(1681, 11, 9), 9, Court::Unified, None, None));
+        m.insert("天和", Era::new("Ten'na", "天和", "てんな", "Tenna", "Tenna", NaiveDate::from_ymd(1681, 11, 9), NaiveDate::from_ymd(1684, 4, 5), 4, Court::Unified, None, None));
+        m.insert("貞享", Era::new("Joukyou", "貞享", "じょうきょう", "Jōkyō", "Zyôkyô", NaiveDate::from_ymd(1684, 4, 5), NaiveDate::from_ymd(1688, 10, 23), 5, Court::Unified, None, None));
+        m.insert("元禄", Era::new("Genroku", "元禄", "げんろく", "Genroku", "Genroku", NaiveDate::from_ymd(1688, 10, 23), NaiveDate::from_ymd(1704, 4, 16), 17, Court::Unified, None, None));
+        m.insert("宝永", Era::new("Houei", "宝永", "ほうえい", "Hōei", "Hôei", NaiveDate::from_ymd(1704, 4, 16), NaiveDate::from_ymd(1711, 6, 11), 8, Court::Unified, None, None));
+        m.insert("正徳", Era::new("Shoutoku", "正徳", "しょうとく", "Shōtoku", "Syôtoku", NaiveDate::from_ymd(1711, 6, 11), NaiveDate::from_ymd(1716, 8, 9), 6, Court::Unified, None, None));
+        m.insert("享保", Era::new("Kyouhou", "享保", "きょうほう", "Kyōhō", "Kyôhô", NaiveDate::from_ymd(1716, 8, 9), NaiveDate::from_ymd(1736, 6, 7), 21, Court::Unified, None, None));
+        m.insert("元文", Era::new("Genbun", "元文", "げんぶん", "Genbun", "Genbun", NaiveDate::from_ymd(1736, 6, 7), NaiveDate::from_ymd(1741, 4, 12), 6, Court::Unified, None, None));
+        m.insert("寛保", Era::new("Kanpou", "寛保", "かんぽう", "Kapō", "Kapô", NaiveDate::from_ymd(1741, 4, 12), NaiveDate::from_ymd(1744, 4, 13), 4, Court::Unified, None, None));
+        m.insert("延享", Era::new("Enkyou", "延享", "えんきょう", "Enkyō", "Enkyô", NaiveDate::from_ymd(1744, 4, 13), NaiveDate::from_ymd(1748, 8, 5), 5, Court::Unified, None, None));
+        m.insert("寛延", Era::new("Kan'en", "寛延", "かんえん", "Kan'en", "Kan'en", NaiveDate::from_ymd(1748, 8, 5), NaiveDate::from_ymd(1751, 12, 14), 4, Court::Unified, None, None));
+        m.insert("宝暦", Era::new("Houreki", "宝暦", "ほうれき", "Hōreki", "Hôreki", NaiveDate::from_ymd(1751, 12, 14), NaiveDate::from_ymd(1764, 6, 30), 14, Court::Unified, None, None));
+        m.insert("明和", Era::new("Meiwa", "明和", "めいわ", "Meiwa", "Meiwa", NaiveDate::from_ymd(1764, 6, 30), NaiveDate::from_ymd(1772, 12, 10), 9, Court::Unified, None, None));
+        m.insert("安永", Era::new("An'ei", "安永", "あんえい", "An'ei", "An'ei", NaiveDate::from_ymd(1772, 12, 10), NaiveDate::from_ymd(1781, 4, 25), 10, Court::Unified, None, None));
+        m.insert("天明", Era::new("Tenmei", "天明", "てんめい", "Tenmei", "Tenmei", NaiveDate::from_ymd(1781, 4, 25), NaiveDate::from_ymd(1789, 2, 19), 9, Court::Unified, None, None));
+        m.insert("寛政", Era::new("Kansei", "寛政", "かんせい", "Kansei", "Kansei", NaiveDate::from_ymd(1789, 2, 19), NaiveDate::from_ymd(1801, 3, 19), 13, Court::Unified, None, None));
+        m.insert("享和", Era::new("Kyouwa", "享和", "きょうわ", "Kyōwa", "Kyôwa", NaiveDate::from_ymd(1801, 3, 19), NaiveDate::from_ymd(1804, 3, 22), 4, Court::Unified, None, None));
+        m.insert("文化", Era::new("Bunka", "文化", "ぶんか", "Bunka", "Bunka", NaiveDate::from_ymd(1804, 3, 22), NaiveDate::from_ymd(1818, 5, 26), 15, Court::Unified, None, None));
+        m.insert("文政", Era::new("Bunsei", "文政", "ぶんせい", "Bunsei", "Bunsei", NaiveDate::from_ymd(1818, 5, 26), NaiveDate::from_ymd(1831, 1, 23), 13, Court::Unified, None, None));
+        m.insert("天保", Era::new("Tenpou", "天保", "てんぽう", "Tenpō", "Tenpô", NaiveDate::from_ymd(1831, 1, 23), NaiveDate::from_ymd(1845, 1, 9), 15, Court::Unified, None, None));
+        m.insert("弘化", Era::new("Kouka", "弘化", "こうか", "Kōka", "Kôka", NaiveDate::from_ymd(1845, 1, 9), NaiveDate::from_ymd(1848, 4, 1), 5, Court::Unified, None, None));
+        m.insert("嘉永", Era::new("Kaei", "嘉永", "かえい", "Kaei", "Kaei", NaiveDate::from_ymd(1848, 4, 1), NaiveDate::from_ymd(1855, 1, 15), 7, Court::Unified, None, None));
+        m.insert("安政", Era::new("Ansei", "安政", "あんせい", "Ansei", "Ansei", NaiveDate::from_ymd(1855, 1, 15), NaiveDate::from_ymd(1860, 4, 8), 7, Court::Unified, None, None));
+        m.insert("万延", Era::new("Man'en", "万延", "まんえん", "Man'en", "Man'en", NaiveDate::from_ymd(1860, 4, 8), NaiveDate::from_ymd(1861, 3, 29), 2, Court::Unified, None, None));
+        m.insert("文久", Era::new("Bunkyuu", "文久", "ぶんきゅう", "Bunkyū", "Bunkyû", NaiveDate::from_ymd(1861, 3, 29), NaiveDate::from_ymd(1864, 3, 27), 4, Court::Unified, None, None));
+        m.insert("元治", Era::new("Genji", "元治", "げんじ", "Genji", "Genzi", NaiveDate::from_ymd(1864, 3, 27), NaiveDate::from_ymd(1865, 5, 1), 2, Court::Unified, None, None));
+        m.insert("慶応", Era::new("Keiou", "慶応", "けいおう", "Keiō", "Keiô", NaiveDate::from_ymd(1865, 5, 1), NaiveDate::from_ymd(1868, 10, 23), 4, Court::Unified, None, None));
+        //Modern Japan
+        m.insert("明治", Era::new("Meiji", "明治", "めいじ", "Meiji", "Meizi", NaiveDate::from_ymd(1868, 10, 23), NaiveDate::from_ymd(1912, 7, 29), 45, Court::Unified, None, None));
+        m.insert("大正", Era::new("Taishou", "大正", "たいしょう", "Taishō", "Taisyô", NaiveDate::from_ymd(1912, 7, 30), NaiveDate::from_ymd(1926, 12, 24), 15, Court::Unified, None, None));
+        m.insert("昭和", Era::new("Shouwa", "昭和", "しょうわ", "Shōwa", "Syôwa", NaiveDate::from_ymd(1926, 12, 25), NaiveDate::from_ymd(1989, 1, 7), 64, Court::Unified, None, None));
+        m.insert("平成", Era::new("Heisei", "平成", "へいせい", "Heisei", "Heisei", NaiveDate::from_ymd(1989, 1, 8), NaiveDate::from_ymd(2019, 4, 30), 31, Court::Unified, None, None));
         m
     };
 }
@@ -1631,734 +1523,3 @@ impl Era {
         self.start_georgian.year()
     }
 }
-
-//     //edits to do here
-//     //edits to do here
-//     //edits to do here
-//     ((854, 12, 27), (857, 3, 24), ("Saikou", "", "", "Saikō", "", 4, Court::Unified, None)), //24
-//     ((857, 3, 24), (859, 5, 24), ("Ten'an", "", "", "Ten'an", "Ten'an", 3, Court::Unified, None)), //25
-//     ((859, 5, 24), (877, 6, 5), ("Jougan", "", "", "Jōgan", "", 19, Court::Unified, None)), //26
-//     ((877, 6, 5), (885, 3, 15), ("Gangyou", "", "", "Gangyō", "", 9, Court::Unified, None)), //27
-//     ((885, 3, 15), (889, 6, 3), ("Ninna", "", "", "Ninna", "Ninna", 5, Court::Unified, None)), //28
-//     ((889, 6, 3), (898, 5, 24), ("Kanpyou", "", "", "Kanpyō", "", 10, Court::Unified, None)), //29
-//     ((898, 5, 24), (901, 9, 5), ("Shoutai", "", "", "Shōtai", "", 4, Court::Unified, None)), //30
-//     ((901, 9, 5), (923, 6, 3), ("Engi", "", "", "Engi", "Engi", 23, Court::Unified, None)), //31
-//     ((923, 6, 3), (931, 5, 21), ("Enchou", "", "", "Enchō", "", 9, Court::Unified, None)), //32
-//     ((931, 5, 21), (938, 6, 27), ("Jouhei", "", "", "Jōhei", "", 8, None)), //33
-//     ((938, 6, 27), (947, 5, 20), ("Tengyou", "", "", "Tengyō", "", 10, Court::Unified, None)), //34
-//     ((947, 5, 20), (957, 11, 26), ("Tenryaku", "", "", "Tenryaku", "Tenryaku", 11, Court::Unified, None)), //35
-//     ((957, 11, 26), (961, 3, 10), ("Tentoku", "", "", "Tentoku", "Tentoku", 5, Court::Unified, None)), //36
-//     ((961, 3, 10), (964, 8, 24), ("Ouwa", "", "", "", "", 4, Court::Unified, None)), //37
-//     ((964, 8, 24), (968, 9, 13), ("Kouhou", "", "", "Kōhō", "", 5, Court::Unified, None)), //38
-//     ((968, 9, 13), (970, 5, 8), ("Anna", "", "", "Anna", "Anna", 3, Court::Unified, None)), //39
-// ];
-
-// const ERAS: [(Vec<&str>, Vec<(Vec<&str>, Era)>); 14] = [
-//     (
-//         vec![
-//             "asuka", 
-//             "asuka jidai", 
-//             "asukajidai", 
-//             "asuka zidai", 
-//             "asukazidai", 
-//             "asuka period", 
-//             "飛鳥時代", 
-//             "飛鳥", 
-//             "あすかじだい", 
-//             "あすか"
-//         ], //period
-//         vec![
-//             (
-//                 vec![
-//                     "taika", 
-//                     "大化", 
-//                     "たいか"
-//                 ], 
-//                 Era::new(
-//                     "Taika", 
-//                     "大化", 
-//                     "たいか", 
-//                     "Taika", 
-//                     "Taika", 
-//                     NaiveDate::from_ymd(645, 7, 20), 
-//                     NaiveDate::from_ymd(650, 3, 25), 
-//                     6
-//                 )
-//             ), //0.era[0] Taika
-//             (
-//                 vec![
-//                     "hakuchi",
-//                     "hakuti",
-//                     "白雉",
-//                     "はくち"
-//                 ], 
-//                 Era::new(
-//                     "Hakuchi", 
-//                     "白雉", 
-//                     "はくち", 
-//                     "Hakuchi", 
-//                     "Hakuti", 
-//                     NaiveDate::from_ymd(650, 3, 25), 
-//                     NaiveDate::from_ymd(654, 11, 27), 
-//                     5
-//                 )
-//             ), //0.era[1] Hakuchi
-//             (
-//                 vec![
-//                     "shuchou",
-//                     "shuchō",
-//                     "syutyô",
-//                     "朱鳥",
-//                     "しゅちょう"
-//                 ],
-//                 Era::new(
-//                     "Shuchou", 
-//                     "朱鳥", 
-//                     "しゅちょう", 
-//                     "Shuchō", 
-//                     "Syutyô", 
-//                     NaiveDate::from_ymd(686, 8, 17), 
-//                     NaiveDate::from_ymd(686, 10, 4), 
-//                     1
-//                 )
-//             ), //0.era[2] Shuchou
-//             (
-//                 vec![
-//                     "taihou",
-//                     "taihō",
-//                     "taihô",
-//                     "大宝",
-//                     "たいほう"
-//                 ],
-//                 Era::new(
-//                     "Taihou", 
-//                     "大宝", 
-//                     "たいほう", 
-//                     "Taihō", 
-//                     "Taihô", 
-//                     NaiveDate::from_ymd(701, 5, 7), 
-//                     NaiveDate::from_ymd(704, 6, 20), 
-//                     4
-//                 )
-//             ), //0.era[3] Taihou
-//             (
-//                 vec![
-//                     "keiun",
-//                     "慶雲",
-//                     "けいうん"
-//                 ],
-//                 Era::new(
-//                     "Keiun", 
-//                     "慶雲", 
-//                     "けいうん", 
-//                     "Keiun", 
-//                     "Keiun", 
-//                     NaiveDate::from_ymd(704, 6, 20), 
-//                     NaiveDate::from_ymd(708, 2, 11), 
-//                     5
-//                 )
-//             ), //0.era[4] Keiun
-//             (
-//                 vec![
-//                     "wadou",
-//                     "wadō",
-//                     "wadô",
-//                     "和銅",
-//                     "わどう"
-//                 ],
-//                 Era::new(
-//                     "Wadou", 
-//                     "和銅", 
-//                     "わどう", 
-//                     "Wadō", 
-//                     "Wadô", 
-//                     NaiveDate::from_ymd(708, 2, 11), 
-//                     NaiveDate::from_ymd(715, 10, 7), 
-//                     8
-//                 )
-//             ) //0.era[5] Wadou
-//         ] //0 eras
-//     ), //0 Asuka 538-710
-//     (
-//         vec![
-//             "nara", 
-//             "nara jidai", 
-//             "narajidai", 
-//             "nara zidai", 
-//             "narazidai", 
-//             "nara period", 
-//             "奈良時代", 
-//             "奈良", 
-//             "ならじだい", 
-//             "なら"
-//         ], //period
-//         vec![
-//             (
-//                 vec![
-//                     "reiki",
-//                     "霊亀",
-//                     "れいき"
-//                 ],
-//                 Era::new(
-//                     "Reiki", 
-//                     "霊亀", 
-//                     "れいき", 
-//                     "Reiki", 
-//                     "Reiki", 
-//                     NaiveDate::from_ymd(715, 10, 7), 
-//                     NaiveDate::from_ymd(717, 12, 28), 
-//                     3
-//                 )
-//             ), //1.era[0] Reiki
-//             (
-//                 vec![
-//                     "yourou",
-//                     "yōrō",
-//                     "yôrô",
-//                     "養老",
-//                     "ようろう"
-//                 ],
-//                 Era::new(
-//                     "Yourou", 
-//                     "養老", 
-//                     "ようろう", 
-//                     "Yōrō", 
-//                     "Yôrô", 
-//                     NaiveDate::from_ymd(717, 12, 28), 
-//                     NaiveDate::from_ymd(724, 3, 27), 
-//                     8
-//                 )
-//             ), //1.era[1] Yourou
-//             (
-//                 vec![
-//                     "jinki",
-//                     "zinki",
-//                     "神亀",
-//                     "じんき"
-//                 ],
-//                 Era::new(
-//                     "Jinki", 
-//                     "神亀", 
-//                     "じんき", 
-//                     "Jinki", 
-//                     "Zinki", 
-//                     NaiveDate::from_ymd(724, 3, 27), 
-//                     NaiveDate::from_ymd(729, 9, 6), 
-//                     6
-//                 )
-//             ), //1.era[2] Jinki
-//             (
-//                 vec![
-//                     "",
-//                     "",
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     NaiveDate::from_ymd(, , ), 
-//                     NaiveDate::from_ymd(, , ), 
-//                     0
-//                 )
-//             ), //1.era[3] Tenpyou
-//             (
-//                 vec![
-//                     "",
-//                     "",
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     NaiveDate::from_ymd(, , ), 
-//                     NaiveDate::from_ymd(, , ), 
-//                     0
-//                 )
-//             ), //1.era[4] Tenpyou-Kanpou
-//             (
-//                 vec![
-//                     "",
-//                     "",
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     NaiveDate::from_ymd(, , ), 
-//                     NaiveDate::from_ymd(, , ), 
-//                     0
-//                 )
-//             ), //1.era[5] Tenpyou-Shouhou
-//             (
-//                 vec![
-//                     "",
-//                     "",
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     NaiveDate::from_ymd(, , ), 
-//                     NaiveDate::from_ymd(, , ), 
-//                     0
-//                 )
-//             ), //1.era[6] Tenpyou-Houji
-//             (
-//                 vec![
-//                     "",
-//                     "",
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     NaiveDate::from_ymd(, , ), 
-//                     NaiveDate::from_ymd(, , ), 
-//                     0
-//                 )
-//             ), //1.era[7] Tenpyou-Jingo
-//             (
-//                 vec![
-//                     "",
-//                     "",
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     NaiveDate::from_ymd(, , ), 
-//                     NaiveDate::from_ymd(, , ), 
-//                     0
-//                 )
-//             ), //1.era[8] Jingo-Keiun
-//             (
-//                 vec![
-//                     "",
-//                     "",
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     NaiveDate::from_ymd(, , ), 
-//                     NaiveDate::from_ymd(, , ), 
-//                     0
-//                 )
-//             ), //1.era[9] Houki
-//             (
-//                 vec![
-//                     "",
-//                     "",
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     NaiveDate::from_ymd(, , ), 
-//                     NaiveDate::from_ymd(, , ), 
-//                     0
-//                 )
-//             ), //1.era[10] Ten'ou
-//             (
-//                 vec![
-//                     "",
-//                     "",
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     NaiveDate::from_ymd(, , ), 
-//                     NaiveDate::from_ymd(, , ), 
-//                     0
-//                 )
-//             ), //1.era[11] Enryaku
-//         ] //1 eras
-//     ), //1 Nara 710-794
-//     (
-//         vec![
-//             "heian", 
-//             "heian jidai", 
-//             "heianjidai", 
-//             "heian zidai", 
-//             "heianzidai", 
-//             "heian period", 
-//             "平安時代", 
-//             "平安", 
-//             "へいあんじだい", 
-//             "へいあん"
-//         ], //period
-//         vec![
-//             (
-//                 vec![
-//                     "",
-//                     "",
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     NaiveDate::from_ymd(, , ), 
-//                     NaiveDate::from_ymd(, , ), 
-//                     0
-//                 )
-//             ), //2.era[0-87]
-//         ] //eras
-//     ), //2 Heian 794-1185
-//     (
-//         vec![
-//             "kamakura", 
-//             "kamakura jidai", 
-//             "kamakurajidai", 
-//             "kamakura zidai", 
-//             "kamakurazidai", 
-//             "kamakura period", 
-//             "鎌倉時代", 
-//             "鎌倉", 
-//             "かまくらじだい", 
-//             "かまくら"
-//         ], //period
-//         vec![
-//             (
-//                 vec![
-//                     "",
-//                     "",
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     "", 
-//                     NaiveDate::from_ymd(, , ), 
-//                     NaiveDate::from_ymd(, , ), 
-//                     0
-//                 )
-//             ), //3.era[0-50]
-//         ]
-//     ), //3 Kamakura 1185-1333
-//     (
-//         vec![
-//             "kenmu no shinsei", 
-//             "kenmunoshinsei", 
-//             "kenmu", 
-//             "kenmu no sinsei", 
-//             "kenmunosinsei", 
-//             "kenmu restoration", 
-//             "建武の新政", 
-//             "建武", 
-//             "けんむのしんせい", 
-//             "けんむ"
-//         ], //period
-//         vec![
-//             (
-//                 vec![
-//                     "kenmu"
-//                 ],
-//                 Era
-//             ) //4.era[0] Kenmu
-//         ]
-//     ), //4 Kenmu no shinsei 1333-1336
-//     (
-//         vec![
-//             "muromachi", 
-//             "muromachi jidai", 
-//             "muromachijidai", 
-//             "muromati", 
-//             "muromati zidai", 
-//             "muromatizidai", 
-//             "muromachi period", 
-//             "muromati period", 
-//             "室町時代", 
-//             "室町", 
-//             "むろまちじだい", 
-//             "むろまち",
-//             "ashikaga", 
-//             "ashikaga jidai", 
-//             "ashikagajidai", 
-//             "asikaga", 
-//             "asikaga zidai", 
-//             "asikagazidai", 
-//             "ashikaga period", 
-//             "asikaga period", 
-//             "足利時代", 
-//             "足利", 
-//             "あしかがじだい", 
-//             "あしかが"
-//         ], //period
-//         vec![
-//             (
-//                 vec![
-//                     ""
-//                 ],
-//                 Era
-//             ) //5.era[0-47] 
-//         ]
-//     ), //5 Muromachi/Ashikaga 1336-1573
-//     (
-//         vec![
-//             "nanboku-chou", 
-//             "nanboku-chou jidai", 
-//             "nanbokuchou", 
-//             "nanbokuchoujidai", 
-//             "nanboku-chō", 
-//             "nanboku-chō jidai", 
-//             "nanbokuchō", 
-//             "nanbokuchō jidai", 
-//             "nanbokuchōjidai", 
-//             "nanboku-tyô", 
-//             "nanboku-tyô zidai", 
-//             "nanbokutyô", 
-//             "nanbokutyôzidai", 
-//             "south and north courts period", 
-//             "northern and southern courts period", 
-//             "南北朝時代", 
-//             "南北朝", 
-//             "なんぼくちょうじだい", 
-//             "なんぼくちょう"
-//         ], //periods
-//         vec![
-//             (
-//                 vec![
-//                     ""
-//                 ],
-//                 Era
-//             ), //6.era[0-23]
-//         ] //6 eras
-//     ), //6 Nanboku-chou 1336-1392
-//     (
-//         vec![
-//             "sengoku", 
-//             "sengoku jidai", 
-//             "sengokujidai", 
-//             "sengoku zidai", 
-//             "sengokuzidai", 
-//             "sengoku period", 
-//             "warring states period", 
-//             "戦国時代", 
-//             "戦国", 
-//             "せんごくじだい", 
-//             "せんごく"
-//         ], //period
-//         vec![
-//             (
-//                 vec![
-//                     ""
-//                 ],
-//                 Era
-//             ), //7.era[0-12]
-//         ] //7 eras
-//     ), //7 Sengoku 1467-1568
-//     (
-//         vec![
-//             "aduchi-momoyama", 
-//             "aduchi-momoyama jidai", 
-//             "aduchimomoyama", 
-//             "aduchimomoyama jidai", 
-//             "aduchimomoyamajidai", 
-//             "azuchi-momoyama", 
-//             "azuchi-momoyama jidai", 
-//             "azuchimomoyama", 
-//             "azuchimomoyamajidai", 
-//             "azuti-momoyama", 
-//             "azuti-momoyama zidai", 
-//             "azutimomoyama", 
-//             "azutimomoyama zidai", 
-//             "azutimomoyamazidai", 
-//             "aduti-momoyama", 
-//             "aduti-momoyama zidai", 
-//             "adutimomoyama", 
-//             "adutimomoyama zidai", 
-//             "adutimomoyamazidai", 
-//             "azuchi-momoyama period", 
-//             "azuchimomoyama period", 
-//             "azuti-momoyama period", 
-//             "azutimomoyama period", 
-//             "aduti-momoyama period", 
-//             "adutimomoyama period", 
-//             "安土桃山時代", 
-//             "安土桃山", 
-//             "あづちももやまじだい", 
-//             "あづちももやま"
-//         ], //period
-//         vec![
-//             (
-//                 vec![
-//                     ""
-//                 ],
-//                 Era
-//             ) //8.era[0-2]
-//         ] //8 eras
-//     ), //8 Azuchi-Momoyama 1573-1603
-//     (
-//         vec![
-//             "edo", 
-//             "edo jidai", 
-//             "edojidai", 
-//             "edo zidai", 
-//             "edozidai", 
-//             "edo period", 
-//             "江戸時代", 
-//             "江戸", 
-//             "えどじだい", 
-//             "えど",
-//             "tokugawa", 
-//             "tokugawa jidai", 
-//             "tokugawajidai", 
-//             "tokugawa zidai", 
-//             "tokugawazidai", 
-//             "tokugawa period", 
-//             "徳川時代", 
-//             "徳川", 
-//             "とくがわじだい", 
-//             "とくがわ"
-//         ], //period
-//         vec![
-//             (
-//                 vec![
-//                     ""
-//                 ],
-//                 Era
-//             ), //9.era[0-34]
-//         ] //eras
-//     ), //9 Edo/Tokugawa 1603-1868
-//     (
-//         vec![
-//             "meiji", 
-//             "meiji jidai", 
-//             "meijijidai", 
-//             "meizi", 
-//             "meizi zidai", 
-//             "meizizidai", 
-//             "meiji period", 
-//             "meizi period", 
-//             "meiji era", 
-//             "meizi era", 
-//             "明治時代", 
-//             "明治", 
-//             "めいじじだい", 
-//             "めいじ", 
-//             "㍾"
-//         ], //period
-//         vec![
-//             (
-//                 vec![
-//                     "meiji",
-//                     "meizi",
-//                     "meiji era",
-//                     "meizi era",
-//                     "明治",
-//                     "めいじ",
-//                     "㍾"
-//                 ],
-//                 Era::new(
-//                     "Meiji",
-//                     "明治",
-//                     "めいじ",
-//                     "Meiji",
-//                     "Meizi",
-//                     NaiveDate::from_ymd(1868, 10, 23),
-//                     NaiveDate::from_ymd(1912, 7, 29),
-//                     45
-//                 )
-//             ) //10.era[0] Meiji
-//         ] //10 eras
-//     ), //10 Meiji 1868-1912
-//     (
-//         vec![
-//             "",
-//         ], //period
-//         vec![
-//             (
-//                 vec![
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "",
-//                     "",
-//                     "",
-//                     "",
-//                     "",
-//                     NaiveDate::from_ymd(1912, 7, 29),
-//                     NaiveDate::from_ymd(, , ),
-//                     15
-//                 )
-//             ) //11.era[0] Taishou
-//         ] //11 eras
-//     ), //11 Taishou 1912-1926
-//     (
-//         vec![
-//             "",
-//         ], //period
-//         vec![
-//             (
-//                 vec![
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "",
-//                     "",
-//                     "",
-//                     "",
-//                     "",
-//                     NaiveDate::from_ymd(, , ),
-//                     NaiveDate::from_ymd(, , ),
-//                     0
-//                 )
-//             ) //12.era[0] Shouwa
-//         ] //12 eras
-//     ), //12 Shouwa 1926-1989
-//     (
-//         vec![
-//             "",
-//         ], //period
-//         vec![
-//             (
-//                 vec![
-//                     ""
-//                 ],
-//                 Era::new(
-//                     "",
-//                     "",
-//                     "",
-//                     "",
-//                     "",
-//                     NaiveDate::from_ymd(, , ),
-//                     NaiveDate::from_ymd(, , ),
-//                     0
-//                 )
-//             ) //13.era[0] Heisei
-//         ] //13 eras
-//     ), //13 Heisei 1989-2019
-// ];
