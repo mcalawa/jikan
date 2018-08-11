@@ -1,3 +1,9 @@
+// This is part of Jikan
+// See README.md for details
+// Periods are used to record larger periods of Japanese history and often include multiple eras. 
+// Periods will eventually be usable to help define eras without using kanji, but this feature is not
+// yet implemented.
+
 use std::collections::HashMap;
 pub use jpn::era::Era;
 
@@ -187,105 +193,118 @@ impl Period {
         period
     }
     
-    pub fn from_str(name: &'static str) -> Option<&'static Self> {
-        let formatted_name = name.to_lowercase();
-        let mut whitespace_iter = formatted_name.split_whitespace();
+    pub fn from_str(name: &'static str) -> Result<&'static Self, &'static str> {
+        let lowercase_name = name.to_lowercase();
+        let mut whitespace_iter = lowercase_name.split_whitespace();
         let first_word = whitespace_iter.next().unwrap();
         let mut dash_iter = first_word.split('-');
         let before_dash = dash_iter.next().unwrap();
-        PERIODS.get(before_dash)
-    }
-
-    fn from_year(year: u32) -> Option<Vec<&'static Self>> {
-        if year < 538 {
-            None
+        let mut before_dash_iter = before_dash.chars();
+        let length = before_dash_iter.clone().count();
+        let mut formatted_name = "".to_string();
+        for _ in 0..length {
+            let current = before_dash_iter.next().unwrap();
+            if current.is_alphabetic() {
+                formatted_name.push(current);
+            }
         }
-        else if year < 710 {
-            Some(vec![PERIODS.get("飛鳥時代").unwrap()])
-        }
-        else if year == 710 {
-            Some(vec![PERIODS.get("飛鳥時代").unwrap(), PERIODS.get("奈良時代").unwrap()])
-        }
-        else if year < 794 {
-            Some(vec![PERIODS.get("奈良時代").unwrap()])
-        }
-        else if year == 794 {
-            Some(vec![PERIODS.get("奈良時代").unwrap(), PERIODS.get("平安時代").unwrap()])
-        }
-        else if year < 1185 {
-            Some(vec![PERIODS.get("平安時代").unwrap()])
-        }
-        else if year == 1185 {
-            Some(vec![PERIODS.get("平安時代").unwrap(), PERIODS.get("鎌倉時代").unwrap()])
-        }
-        else if year < 1333 {
-            Some(vec![PERIODS.get("鎌倉時代").unwrap()])
-        }
-        else if year == 1333 {
-            Some(vec![PERIODS.get("鎌倉時代").unwrap(), PERIODS.get("建武の新政").unwrap()])
-        }
-        else if year < 1336 {
-            Some(vec![PERIODS.get("建武の新政").unwrap()])
-        }
-        else if year == 1336 {
-            Some(vec![PERIODS.get("建武の新政").unwrap(), PERIODS.get("室町時代").unwrap(), PERIODS.get("足利時代").unwrap(), PERIODS.get("南北朝時代").unwrap()])
-        }
-        else if year <= 1392 {
-            Some(vec![PERIODS.get("室町時代").unwrap(), PERIODS.get("足利時代").unwrap(), PERIODS.get("南北朝時代").unwrap()])
-        }
-        else if year < 1467 {
-            Some(vec![PERIODS.get("室町時代").unwrap(), PERIODS.get("足利時代").unwrap()])
-        }
-        else if year <= 1568 {
-            Some(vec![PERIODS.get("室町時代").unwrap(), PERIODS.get("足利時代").unwrap(), PERIODS.get("戦国時代").unwrap()])
-        }
-        else if year < 1573 {
-            Some(vec![PERIODS.get("室町時代").unwrap(), PERIODS.get("足利時代").unwrap()])
-        }
-        else if year == 1573 {
-            Some(vec![PERIODS.get("室町時代").unwrap(), PERIODS.get("足利時代").unwrap(), PERIODS.get("安土桃山時代").unwrap()])
-        }
-        else if year < 1603 {
-            Some(vec![PERIODS.get("安土桃山時代").unwrap()])
-        }
-        else if year == 1603 {
-            Some(vec![PERIODS.get("安土桃山時代").unwrap(), PERIODS.get("江戸時代").unwrap(), PERIODS.get("徳川時代").unwrap()])
-        }
-        else if year < 1868 {
-            Some(vec![PERIODS.get("江戸時代").unwrap(), PERIODS.get("徳川時代").unwrap()])
-        }
-        else if year == 1868 {
-            Some(vec![PERIODS.get("江戸時代").unwrap(), PERIODS.get("徳川時代").unwrap(), PERIODS.get("明治時代").unwrap()])
-        }
-        else if year < 1912 {
-            Some(vec![PERIODS.get("明治時代").unwrap()])
-        }
-        else if year == 1912 {
-            Some(vec![PERIODS.get("明治時代").unwrap(), PERIODS.get("大正時代").unwrap()])
-        }
-        else if year < 1926 {
-            Some(vec![PERIODS.get("大正時代").unwrap()])
-        }
-        else if year == 1926 {
-            Some(vec![PERIODS.get("大正時代").unwrap(), PERIODS.get("昭和時代").unwrap()])
-        }
-        else if year < 1989 {
-            Some(vec![PERIODS.get("昭和時代").unwrap()])
-        }
-        else if year == 1989 {
-            Some(vec![PERIODS.get("昭和時代").unwrap(), PERIODS.get("平成時代").unwrap()])
-        }
-        else if year <= 2019 {
-            Some(vec![PERIODS.get("平成時代").unwrap()])
+        if PERIODS.contains_key(formatted_name.as_str()) {
+            let period = PERIODS.get(formatted_name.as_str()).unwrap().clone();
+            Ok(period)
         }
         else {
-            None
+            Err("Not a valid period name!")
         }
     }
 
-    pub fn from_era(era: Era) -> Option<Vec<&'static Self>> {
-        let year = era.georgian_start_year() as u32;
+    fn from_year(year: u32) -> Result<Vec<&'static Self>, &'static str> {
+        if year < 538 {
+            Err("Jikan does not cover periods prior to 538!")
+        }
+        else if year < 710 {
+            Ok(vec![PERIODS.get("飛鳥時代").unwrap()])
+        }
+        else if year == 710 {
+            Ok(vec![PERIODS.get("飛鳥時代").unwrap(), PERIODS.get("奈良時代").unwrap()])
+        }
+        else if year < 794 {
+            Ok(vec![PERIODS.get("奈良時代").unwrap()])
+        }
+        else if year == 794 {
+            Ok(vec![PERIODS.get("奈良時代").unwrap(), PERIODS.get("平安時代").unwrap()])
+        }
+        else if year < 1185 {
+            Ok(vec![PERIODS.get("平安時代").unwrap()])
+        }
+        else if year == 1185 {
+            Ok(vec![PERIODS.get("平安時代").unwrap(), PERIODS.get("鎌倉時代").unwrap()])
+        }
+        else if year < 1333 {
+            Ok(vec![PERIODS.get("鎌倉時代").unwrap()])
+        }
+        else if year == 1333 {
+            Ok(vec![PERIODS.get("鎌倉時代").unwrap(), PERIODS.get("建武の新政").unwrap()])
+        }
+        else if year < 1336 {
+            Ok(vec![PERIODS.get("建武の新政").unwrap()])
+        }
+        else if year == 1336 {
+            Ok(vec![PERIODS.get("建武の新政").unwrap(), PERIODS.get("室町時代").unwrap(), PERIODS.get("足利時代").unwrap(), PERIODS.get("南北朝時代").unwrap()])
+        }
+        else if year <= 1392 {
+            Ok(vec![PERIODS.get("室町時代").unwrap(), PERIODS.get("足利時代").unwrap(), PERIODS.get("南北朝時代").unwrap()])
+        }
+        else if year < 1467 {
+            Ok(vec![PERIODS.get("室町時代").unwrap(), PERIODS.get("足利時代").unwrap()])
+        }
+        else if year <= 1568 {
+            Ok(vec![PERIODS.get("室町時代").unwrap(), PERIODS.get("足利時代").unwrap(), PERIODS.get("戦国時代").unwrap()])
+        }
+        else if year < 1573 {
+            Ok(vec![PERIODS.get("室町時代").unwrap(), PERIODS.get("足利時代").unwrap()])
+        }
+        else if year == 1573 {
+            Ok(vec![PERIODS.get("室町時代").unwrap(), PERIODS.get("足利時代").unwrap(), PERIODS.get("安土桃山時代").unwrap()])
+        }
+        else if year < 1603 {
+            Ok(vec![PERIODS.get("安土桃山時代").unwrap()])
+        }
+        else if year == 1603 {
+            Ok(vec![PERIODS.get("安土桃山時代").unwrap(), PERIODS.get("江戸時代").unwrap(), PERIODS.get("徳川時代").unwrap()])
+        }
+        else if year < 1868 {
+            Ok(vec![PERIODS.get("江戸時代").unwrap(), PERIODS.get("徳川時代").unwrap()])
+        }
+        else if year == 1868 {
+            Ok(vec![PERIODS.get("江戸時代").unwrap(), PERIODS.get("徳川時代").unwrap(), PERIODS.get("明治時代").unwrap()])
+        }
+        else if year < 1912 {
+            Ok(vec![PERIODS.get("明治時代").unwrap()])
+        }
+        else if year == 1912 {
+            Ok(vec![PERIODS.get("明治時代").unwrap(), PERIODS.get("大正時代").unwrap()])
+        }
+        else if year < 1926 {
+            Ok(vec![PERIODS.get("大正時代").unwrap()])
+        }
+        else if year == 1926 {
+            Ok(vec![PERIODS.get("大正時代").unwrap(), PERIODS.get("昭和時代").unwrap()])
+        }
+        else if year < 1989 {
+            Ok(vec![PERIODS.get("昭和時代").unwrap()])
+        }
+        else if year == 1989 {
+            Ok(vec![PERIODS.get("昭和時代").unwrap(), PERIODS.get("平成時代").unwrap()])
+        }
+        else if year <= 2019 {
+            Ok(vec![PERIODS.get("平成時代").unwrap()])
+        }
+        else {
+            Err("The period after the Heisei period has yet to be named!")
+        }
+    }
 
-        Period::from_year(year)
+    pub fn from_era(era: Era) -> Result<Vec<&'static Self>, &'static str> {
+        Period::from_year(era.georgian_start_year())
     }
 }

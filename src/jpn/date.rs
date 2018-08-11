@@ -1,4 +1,4 @@
-use jpn::erayear::EraYear;
+use jpn::era::EraYear;
 
 pub struct Date {
     day: u32,

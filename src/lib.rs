@@ -12,11 +12,9 @@ pub mod prelude {
 pub mod jpn {
     mod date;
     mod era;
-    mod erayear;
     mod period;
     
     pub use self::period::Period;
     pub use self::date::Date;
-    pub use self::era::{Era, Court};
-    pub use self::erayear::EraYear;
+    pub use self::era::{Era, Court, EraYear};
 }

@@ -1252,7 +1252,7 @@ lazy_static! {
         m.insert("長徳", Era::new("Choutoku", "長徳", "ちょうとく", "Chōtoku", "Tyôtoku", NaiveDate::from_ymd(995, 3, 30), NaiveDate::from_ymd(999, 2, 6), 5, Court::Unified, None, None));
         m.insert("長保", Era::new("Chouhou", "長保", "ちょうほう", "Chōhō", "Tyôhô", NaiveDate::from_ymd(999, 2, 6), NaiveDate::from_ymd(1004, 8, 14), 6, Court::Unified, None, None));
         m.insert("寛弘", Era::new("Kankou", "寛弘", "かんこう", "Kankō", "Kankô", NaiveDate::from_ymd(1004, 8, 14), NaiveDate::from_ymd(1013, 2, 4), 9, Court::Unified, None, None));
-        m.insert("長和", Era::new("Chouwa", "長和", "ちょうわ", "Chōwa", "Tyôwa", NaiveDate::from_ymd(1013, 2, 4), NaiveDate::from_ymd(, , ), 6, Court::Unified, None, None));
+        m.insert("長和", Era::new("Chouwa", "長和", "ちょうわ", "Chōwa", "Tyôwa", NaiveDate::from_ymd(1013, 2, 4), NaiveDate::from_ymd(1017, 5, 27), 6, Court::Unified, None, None));
         m.insert("寛仁", Era::new("Kan'nin", "寛仁", "かんにん", "Kannin", "Kannin", NaiveDate::from_ymd(1017, 5, 27), NaiveDate::from_ymd(1021, 3, 23), 5, Court::Unified, None, None));
         m.insert("治安", Era::new("Jian", "治安", "じあん", "Jian", "Zian", NaiveDate::from_ymd(1021, 3, 23), NaiveDate::from_ymd(1024, 8, 25), 4, Court::Unified, None, None));
         m.insert("万寿", Era::new("Manju", "万寿", "まんじゅ", "Manju", "Manzyu", NaiveDate::from_ymd(1024, 8, 25), NaiveDate::from_ymd(1028, 8, 24), 5, Court::Unified, None, None));
@@ -1311,7 +1311,7 @@ lazy_static! {
         m.insert("建久", Era::new("Kenkyuu", "建久", "けんきゅう", "Kenkyū", "Kenkyû", NaiveDate::from_ymd(1190, 5, 23), NaiveDate::from_ymd(1199, 5, 30), 10, Court::Unified, None, None));
         m.insert("正治", Era::new("Shouji", "正治", "しょうじ", "Shōji", "Syôzi", NaiveDate::from_ymd(1199, 5, 30), NaiveDate::from_ymd(1201, 3, 26), 3, Court::Unified, None, None));
         m.insert("建仁", Era::new("Ken'nin", "建仁", "けんにん", "Kennin", "Kennin", NaiveDate::from_ymd(1201, 3, 26), NaiveDate::from_ymd(1204, 3, 30), 4, Court::Unified, None, None));
-        m.insert("元久", Era::new(Genkyuu"", "元久", "げんきゅう", "Genkyū", "Genkyû", NaiveDate::from_ymd(1204, 3, 30), NaiveDate::from_ymd(1206, 6, 12), 3, Court::Unified, None, None));
+        m.insert("元久", Era::new("Genkyuu", "元久", "げんきゅう", "Genkyū", "Genkyû", NaiveDate::from_ymd(1204, 3, 30), NaiveDate::from_ymd(1206, 6, 12), 3, Court::Unified, None, None));
         m.insert("建永", Era::new("Ken'ei", "建永", "けんえい", "Ken'ei", "Ken'ei", NaiveDate::from_ymd(1206, 6, 12), NaiveDate::from_ymd(1207, 11, 23), 2, Court::Unified, None, None));
         m.insert("承元", Era::new("Jougen (Kamakura)", "承元", "じょうげん（かまくらじだい）", "Jōgen (Kamakura)", "Zyôgen (Kamakura)", NaiveDate::from_ymd(1207, 11, 23), NaiveDate::from_ymd(1211, 4, 30), 5, Court::Unified, None, None));
         m.insert("建暦", Era::new("Kenryaku", "建暦", "けんりゃく", "Kenryaku", "Kenryaku", NaiveDate::from_ymd(1211, 4, 30), NaiveDate::from_ymd(1214, 1, 25), 3, Court::Unified, None, None));
@@ -1354,11 +1354,11 @@ lazy_static! {
         m.insert("元亨", Era::new("Genkyou", "元亨", "げんきょう", "Genkyō", "Genkyô", NaiveDate::from_ymd(1321, 3, 30), NaiveDate::from_ymd(1325, 1, 2), 4, Court::Unified, None, None));
         m.insert("正中", Era::new("Shouchuu", "正中", "しょうちゅう", "Shōchū", "Syôtyû", NaiveDate::from_ymd(1325, 1, 2), NaiveDate::from_ymd(1326, 6, 5), 3, Court::Unified, None, None));
         m.insert("嘉暦", Era::new("Karyaku", "嘉暦", "かりゃく", "Karyaku", "Karyaku", NaiveDate::from_ymd(1326, 6, 5), NaiveDate::from_ymd(1329, 9, 30), 4, Court::Unified, None, None));
-        m.insert("元徳", Era::new("Gentoku", "元徳", "げんとく", "Gentoku", "Gentoku", NaiveDate::from_ymd(1329, 9, 30), NaiveDate::from_ymd(1332, 5, 31), 4, Court::Both, NaiveDate::from_ymd(1331, 9, 19), 3));
+        m.insert("元徳", Era::new("Gentoku", "元徳", "げんとく", "Gentoku", "Gentoku", NaiveDate::from_ymd(1329, 9, 30), NaiveDate::from_ymd(1332, 5, 31), 4, Court::Both, Some(NaiveDate::from_ymd(1331, 9, 19)), Some(3)));
         m.insert("元弘", Era::new("Genkou", "元弘", "げんこう", "Genkō", "Genkô", NaiveDate::from_ymd(1331, 9, 19), NaiveDate::from_ymd(1334, 3, 13), 4, Court::South, None, None));
         m.insert("正慶", Era::new("Shoukyou", "正慶", "しょうきょう", "Shōkyō", "Syôkyô", NaiveDate::from_ymd(1332, 5, 23), NaiveDate::from_ymd(1333, 7, 15), 2, Court::North, None, None));
         //Kenmu restoration
-        m.insert("建武", Era::new("Kenmu", "建武", "けんむ", "Kenmu", "Kenmu", NaiveDate::from_ymd(1334, 3, 13), NaiveDate::from_ymd(1338, 10, 19), 5, Court::Both, NaiveDate::from_ymd(1336, 4, 19), 3));
+        m.insert("建武", Era::new("Kenmu", "建武", "けんむ", "Kenmu", "Kenmu", NaiveDate::from_ymd(1334, 3, 13), NaiveDate::from_ymd(1338, 10, 19), 5, Court::Both, Some(NaiveDate::from_ymd(1336, 4, 19)), Some(3)));
         //Muromachi/Ashikaga period
         //Northern and Southern Courts period
         m.insert("延元", Era::new("Engen", "延元", "えんげん", "Engen", "Engen", NaiveDate::from_ymd(1336, 4, 19), NaiveDate::from_ymd(1340, 6, 2), 5, Court::South, None, None));
@@ -1462,7 +1462,7 @@ lazy_static! {
     };
 }
 
-#[derive(Clone)]
+#[derive(Clone, Eq, PartialEq, Hash)]
 pub enum Court {
     Unified,
     North,
@@ -1481,45 +1481,61 @@ pub struct Era {
     end_georgian: NaiveDate,
     end_year: u32,
     court: Court,
+    alt_end_georgian: Option<NaiveDate>,
+    alt_end_year: Option<u32>,
+}
+
+#[derive(Clone, Eq, PartialEq)]
+pub struct EraYear {
+    era: Era,
+    year: u32,
 }
 
 impl Era {
-    pub fn new(kana_spelling: String, kanji: String, hiragana: String, hepburn: String, iso_3602: String, start_georgian: NaiveDate, end_georgian: NaiveDate, end_year: u32, court: Court) -> Self {
+    pub fn new(kana_spelling: &'static str, kanji: &'static str, hiragana: &'static str, hepburn: &'static str, iso_3602: &'static str, start_georgian: NaiveDate, end_georgian: NaiveDate, end_year: u32, court: Court, alt_end_georgian: Option<NaiveDate>, alt_end_year: Option<u32>) -> Self {
         let era = Era {
-            kana_spelling: kana_spelling,
-            kanji: kanji,
-            hiragana: hiragana,
-            hepburn: hepburn,
-            iso_3602: iso_3602,
+            kana_spelling: kana_spelling.to_string(),
+            kanji: kanji.to_string(),
+            hiragana: hiragana.to_string(),
+            hepburn: hepburn.to_string(),
+            iso_3602: iso_3602.to_string(),
             start_georgian: start_georgian,
             end_georgian: end_georgian,
             end_year: end_year,
             court: court,
+            alt_end_georgian: alt_end_georgian,
+            alt_end_year: alt_end_year,
         };
         era
     }
 
-    pub fn get(_era: &str, _period: &str) -> Option<Self> {
+    pub fn from_kanji(_kanji: &str) -> Result<Self, &'static str> {
         unimplemented!()
     }
 
-    pub fn get_from_period(_era: &str, _period: Period) -> Option<Self> {
+    pub fn from_georgian(_date: NaiveDate) -> Result<Self, &'static str> {
         unimplemented!()
     }
 
-    pub fn from_kanji(_kanji: &str) -> Option<Self> {
+    pub fn from_georgian_ymd(_year: u32, _month: u32, _day: u32) -> Result<Self, &'static str> {
         unimplemented!()
     }
 
-    pub fn from_georgian(_date: NaiveDate) -> Option<Self> {
+    pub fn georgian_start_year(&self) -> u32 {
+        self.start_georgian.year() as u32
+    }
+}
+
+impl EraYear {
+    pub fn new() {
         unimplemented!()
     }
 
-    pub fn from_georgian_ymd(_year: u32, _month: u32, _day: u32) -> Option<Self> {
+    pub fn from_georgian(_date: NaiveDate) -> Result<Self, &'static str> {
         unimplemented!()
     }
 
-    pub fn georgian_start_year(&self) -> i32 {
-        self.start_georgian.year()
+    pub fn interate(_years: u32) -> Result<Self, &'static str> {
+        unimplemented!()
     }
 }
