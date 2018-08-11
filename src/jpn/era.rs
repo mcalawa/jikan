@@ -2,8 +2,15 @@
 // See README.md for details
 
 use chrono::prelude::*;
-use jpn::period::Period;
 use std::collections::HashMap;
+
+pub fn is_kanji(character: char) -> bool {
+    match character {
+        '\u{4e00}'...'\u{9faf}' |
+        '\u{3400}'...'\u{4dbf}' => true,
+        _ => false,
+    }
+}
 
 lazy_static! {
     static ref LUNAR_NEW_YEAR: HashMap<u32, NaiveDate> = {
@@ -1460,6 +1467,258 @@ lazy_static! {
         m.insert("平成", Era::new("Heisei", "平成", "へいせい", "Heisei", "Heisei", NaiveDate::from_ymd(1989, 1, 8), NaiveDate::from_ymd(2019, 4, 30), 31, Court::Unified, None, None));
         m
     };
+
+    static ref ERA_VEC: Vec<Era> = {
+        let mut v = Vec::new();
+        v.push(Era::from_kanji("大化").unwrap());
+        v.push(Era::from_kanji("白雉").unwrap());
+        v.push(Era::from_kanji("朱鳥").unwrap());
+        v.push(Era::from_kanji("大宝").unwrap());
+        v.push(Era::from_kanji("慶雲").unwrap());
+        v.push(Era::from_kanji("和銅").unwrap());
+        v.push(Era::from_kanji("霊亀").unwrap());
+        v.push(Era::from_kanji("養老").unwrap());
+        v.push(Era::from_kanji("神亀").unwrap());
+        v.push(Era::from_kanji("天平").unwrap());
+        v.push(Era::from_kanji("天平感宝").unwrap());
+        v.push(Era::from_kanji("天平勝宝").unwrap());
+        v.push(Era::from_kanji("天平宝字").unwrap());
+        v.push(Era::from_kanji("天平神護").unwrap());
+        v.push(Era::from_kanji("神護景雲").unwrap());
+        v.push(Era::from_kanji("宝亀").unwrap());
+        v.push(Era::from_kanji("天応").unwrap());
+        v.push(Era::from_kanji("延暦").unwrap());
+        v.push(Era::from_kanji("大同").unwrap());
+        v.push(Era::from_kanji("弘仁").unwrap());
+        v.push(Era::from_kanji("天長").unwrap());
+        v.push(Era::from_kanji("承和").unwrap());
+        v.push(Era::from_kanji("嘉祥").unwrap());
+        v.push(Era::from_kanji("仁寿").unwrap());
+        v.push(Era::from_kanji("斉衡").unwrap());
+        v.push(Era::from_kanji("天安").unwrap());
+        v.push(Era::from_kanji("貞観").unwrap());
+        v.push(Era::from_kanji("元慶").unwrap());
+        v.push(Era::from_kanji("仁和").unwrap());
+        v.push(Era::from_kanji("寛平").unwrap());
+        v.push(Era::from_kanji("昌泰").unwrap());
+        v.push(Era::from_kanji("延喜").unwrap());
+        v.push(Era::from_kanji("延長").unwrap());
+        v.push(Era::from_kanji("承平").unwrap());
+        v.push(Era::from_kanji("天慶").unwrap());
+        v.push(Era::from_kanji("天暦").unwrap());
+        v.push(Era::from_kanji("天徳").unwrap());
+        v.push(Era::from_kanji("応和").unwrap());
+        v.push(Era::from_kanji("康保").unwrap());
+        v.push(Era::from_kanji("安和").unwrap());
+        v.push(Era::from_kanji("天禄").unwrap());
+        v.push(Era::from_kanji("天延").unwrap());
+        v.push(Era::from_kanji("貞元").unwrap());
+        v.push(Era::from_kanji("天元").unwrap()); 
+        v.push(Era::from_kanji("永観").unwrap());
+        v.push(Era::from_kanji("寛和").unwrap());
+        v.push(Era::from_kanji("永延").unwrap());
+        v.push(Era::from_kanji("永祚").unwrap());
+        v.push(Era::from_kanji("正暦").unwrap());
+        v.push(Era::from_kanji("長徳").unwrap());
+        v.push(Era::from_kanji("長保").unwrap());
+        v.push(Era::from_kanji("寛弘").unwrap());
+        v.push(Era::from_kanji("長和").unwrap());
+        v.push(Era::from_kanji("寛仁").unwrap());
+        v.push(Era::from_kanji("治安").unwrap());
+        v.push(Era::from_kanji("万寿").unwrap());
+        v.push(Era::from_kanji("長元").unwrap());
+        v.push(Era::from_kanji("長暦").unwrap());
+        v.push(Era::from_kanji("長久").unwrap());
+        v.push(Era::from_kanji("寛徳").unwrap());
+        v.push(Era::from_kanji("永承").unwrap());
+        v.push(Era::from_kanji("天喜").unwrap());
+        v.push(Era::from_kanji("康平").unwrap());
+        v.push(Era::from_kanji("治暦").unwrap());
+        v.push(Era::from_kanji("延久").unwrap());
+        v.push(Era::from_kanji("承保").unwrap());
+        v.push(Era::from_kanji("承暦").unwrap());
+        v.push(Era::from_kanji("永保").unwrap());
+        v.push(Era::from_kanji("応徳").unwrap());
+        v.push(Era::from_kanji("寛治").unwrap());
+        v.push(Era::from_kanji("嘉保").unwrap());
+        v.push(Era::from_kanji("永長").unwrap());
+        v.push(Era::from_kanji("承徳").unwrap());
+        v.push(Era::from_kanji("康和").unwrap());
+        v.push(Era::from_kanji("長治").unwrap());
+        v.push(Era::from_kanji("嘉承").unwrap());
+        v.push(Era::from_kanji("天仁").unwrap());
+        v.push(Era::from_kanji("天永").unwrap());
+        v.push(Era::from_kanji("永久").unwrap());
+        v.push(Era::from_kanji("元永").unwrap());
+        v.push(Era::from_kanji("保安").unwrap());
+        v.push(Era::from_kanji("天治").unwrap());
+        v.push(Era::from_kanji("大治").unwrap());
+        v.push(Era::from_kanji("天承").unwrap());
+        v.push(Era::from_kanji("長承").unwrap());
+        v.push(Era::from_kanji("保延").unwrap());
+        v.push(Era::from_kanji("永治").unwrap());
+        v.push(Era::from_kanji("康治").unwrap());
+        v.push(Era::from_kanji("天養").unwrap());
+        v.push(Era::from_kanji("久安").unwrap());
+        v.push(Era::from_kanji("仁平").unwrap());
+        v.push(Era::from_kanji("久寿").unwrap());
+        v.push(Era::from_kanji("保元").unwrap());
+        v.push(Era::from_kanji("平治").unwrap());
+        v.push(Era::from_kanji("永暦").unwrap());
+        v.push(Era::from_kanji("応保").unwrap());
+        v.push(Era::from_kanji("長寛").unwrap());
+        v.push(Era::from_kanji("永万").unwrap());
+        v.push(Era::from_kanji("仁安").unwrap());
+        v.push(Era::from_kanji("嘉応").unwrap());
+        v.push(Era::from_kanji("承安").unwrap());
+        v.push(Era::from_kanji("安元").unwrap());
+        v.push(Era::from_kanji("治承").unwrap());
+        v.push(Era::from_kanji("養和").unwrap());
+        v.push(Era::from_kanji("寿永").unwrap());
+        v.push(Era::from_kanji("元暦").unwrap());
+        v.push(Era::from_kanji("文治").unwrap());
+        v.push(Era::from_kanji("建久").unwrap());
+        v.push(Era::from_kanji("正治").unwrap());
+        v.push(Era::from_kanji("建仁").unwrap());
+        v.push(Era::from_kanji("元久").unwrap());
+        v.push(Era::from_kanji("建永").unwrap());
+        v.push(Era::from_kanji("承元").unwrap());
+        v.push(Era::from_kanji("建暦").unwrap());
+        v.push(Era::from_kanji("建保").unwrap());
+        v.push(Era::from_kanji("承久").unwrap());
+        v.push(Era::from_kanji("貞応").unwrap());
+        v.push(Era::from_kanji("元仁").unwrap());
+        v.push(Era::from_kanji("嘉禄").unwrap());
+        v.push(Era::from_kanji("安貞").unwrap());
+        v.push(Era::from_kanji("寛喜").unwrap());
+        v.push(Era::from_kanji("貞永").unwrap());
+        v.push(Era::from_kanji("天福").unwrap());
+        v.push(Era::from_kanji("文暦").unwrap());
+        v.push(Era::from_kanji("嘉禎").unwrap());
+        v.push(Era::from_kanji("暦仁").unwrap());
+        v.push(Era::from_kanji("延応").unwrap());
+        v.push(Era::from_kanji("仁治").unwrap());
+        v.push(Era::from_kanji("寛元").unwrap());
+        v.push(Era::from_kanji("宝治").unwrap());
+        v.push(Era::from_kanji("建長").unwrap());
+        v.push(Era::from_kanji("康元").unwrap());
+        v.push(Era::from_kanji("正嘉").unwrap());
+        v.push(Era::from_kanji("正元").unwrap());
+        v.push(Era::from_kanji("文応").unwrap());
+        v.push(Era::from_kanji("弘長").unwrap());
+        v.push(Era::from_kanji("文永").unwrap());
+        v.push(Era::from_kanji("建治").unwrap());
+        v.push(Era::from_kanji("弘安").unwrap());
+        v.push(Era::from_kanji("正応").unwrap());
+        v.push(Era::from_kanji("永仁").unwrap());
+        v.push(Era::from_kanji("正安").unwrap());
+        v.push(Era::from_kanji("乾元").unwrap());
+        v.push(Era::from_kanji("嘉元").unwrap());
+        v.push(Era::from_kanji("徳治").unwrap());
+        v.push(Era::from_kanji("延慶").unwrap());
+        v.push(Era::from_kanji("応長").unwrap());
+        v.push(Era::from_kanji("正和").unwrap());
+        v.push(Era::from_kanji("文保").unwrap());
+        v.push(Era::from_kanji("元応").unwrap());
+        v.push(Era::from_kanji("元亨").unwrap());
+        v.push(Era::from_kanji("正中").unwrap());
+        v.push(Era::from_kanji("嘉暦").unwrap());
+        v.push(Era::from_kanji("元徳").unwrap());
+        v.push(Era::from_kanji("元弘").unwrap());
+        v.push(Era::from_kanji("正慶").unwrap());
+        v.push(Era::from_kanji("建武").unwrap());
+        v.push(Era::from_kanji("延元").unwrap());
+        v.push(Era::from_kanji("暦応").unwrap());
+        v.push(Era::from_kanji("興国").unwrap());
+        v.push(Era::from_kanji("康永").unwrap());
+        v.push(Era::from_kanji("貞和").unwrap());
+        v.push(Era::from_kanji("正平").unwrap());
+        v.push(Era::from_kanji("観応").unwrap());
+        v.push(Era::from_kanji("文和").unwrap());
+        v.push(Era::from_kanji("延文").unwrap());
+        v.push(Era::from_kanji("康安").unwrap());
+        v.push(Era::from_kanji("貞治").unwrap());
+        v.push(Era::from_kanji("応安").unwrap());
+        v.push(Era::from_kanji("建徳").unwrap());
+        v.push(Era::from_kanji("文中").unwrap());
+        v.push(Era::from_kanji("永和").unwrap());
+        v.push(Era::from_kanji("天授").unwrap());
+        v.push(Era::from_kanji("康暦").unwrap());
+        v.push(Era::from_kanji("弘和").unwrap());
+        v.push(Era::from_kanji("永徳").unwrap());
+        v.push(Era::from_kanji("至徳").unwrap());
+        v.push(Era::from_kanji("元中").unwrap());
+        v.push(Era::from_kanji("嘉慶").unwrap());
+        v.push(Era::from_kanji("康応").unwrap());
+        v.push(Era::from_kanji("明徳").unwrap());
+        v.push(Era::from_kanji("応永").unwrap());
+        v.push(Era::from_kanji("正長").unwrap());
+        v.push(Era::from_kanji("永享").unwrap());
+        v.push(Era::from_kanji("嘉吉").unwrap());
+        v.push(Era::from_kanji("文安").unwrap());
+        v.push(Era::from_kanji("宝徳").unwrap());
+        v.push(Era::from_kanji("享徳").unwrap());
+        v.push(Era::from_kanji("康正").unwrap());
+        v.push(Era::from_kanji("長禄").unwrap());
+        v.push(Era::from_kanji("寛正").unwrap());
+        v.push(Era::from_kanji("文正").unwrap());
+        v.push(Era::from_kanji("応仁").unwrap());
+        v.push(Era::from_kanji("文明").unwrap());
+        v.push(Era::from_kanji("長享").unwrap());
+        v.push(Era::from_kanji("延徳").unwrap());
+        v.push(Era::from_kanji("明応").unwrap());
+        v.push(Era::from_kanji("文亀").unwrap());
+        v.push(Era::from_kanji("永正").unwrap());
+        v.push(Era::from_kanji("大永").unwrap());
+        v.push(Era::from_kanji("享禄").unwrap());
+        v.push(Era::from_kanji("天文").unwrap());
+        v.push(Era::from_kanji("弘治").unwrap());
+        v.push(Era::from_kanji("永禄").unwrap());
+        v.push(Era::from_kanji("元亀").unwrap());
+        v.push(Era::from_kanji("天正").unwrap());
+        v.push(Era::from_kanji("文禄").unwrap());
+        v.push(Era::from_kanji("慶長").unwrap());
+        v.push(Era::from_kanji("元和").unwrap());
+        v.push(Era::from_kanji("寛永").unwrap());
+        v.push(Era::from_kanji("正保").unwrap());
+        v.push(Era::from_kanji("慶安").unwrap());
+        v.push(Era::from_kanji("承応").unwrap());
+        v.push(Era::from_kanji("明暦").unwrap());
+        v.push(Era::from_kanji("万治").unwrap());
+        v.push(Era::from_kanji("寛文").unwrap());
+        v.push(Era::from_kanji("延宝").unwrap());
+        v.push(Era::from_kanji("天和").unwrap());
+        v.push(Era::from_kanji("貞享").unwrap());
+        v.push(Era::from_kanji("元禄").unwrap());
+        v.push(Era::from_kanji("宝永").unwrap());
+        v.push(Era::from_kanji("正徳").unwrap());
+        v.push(Era::from_kanji("享保").unwrap());
+        v.push(Era::from_kanji("元文").unwrap());
+        v.push(Era::from_kanji("寛保").unwrap());
+        v.push(Era::from_kanji("延享").unwrap());
+        v.push(Era::from_kanji("寛延").unwrap());
+        v.push(Era::from_kanji("宝暦").unwrap());
+        v.push(Era::from_kanji("明和").unwrap());
+        v.push(Era::from_kanji("安永").unwrap());
+        v.push(Era::from_kanji("天明").unwrap());
+        v.push(Era::from_kanji("寛政").unwrap());
+        v.push(Era::from_kanji("享和").unwrap());
+        v.push(Era::from_kanji("文化").unwrap());
+        v.push(Era::from_kanji("文政").unwrap());
+        v.push(Era::from_kanji("天保").unwrap());
+        v.push(Era::from_kanji("弘化").unwrap());
+        v.push(Era::from_kanji("嘉永").unwrap());
+        v.push(Era::from_kanji("安政").unwrap());
+        v.push(Era::from_kanji("万延").unwrap());
+        v.push(Era::from_kanji("文久").unwrap());
+        v.push(Era::from_kanji("元治").unwrap());
+        v.push(Era::from_kanji("慶応").unwrap());
+        v.push(Era::from_kanji("明治").unwrap());
+        v.push(Era::from_kanji("大正").unwrap());
+        v.push(Era::from_kanji("昭和").unwrap());
+        v.push(Era::from_kanji("平成").unwrap());
+        v
+    };
 }
 
 #[derive(Clone, Eq, PartialEq, Hash)]
@@ -1509,8 +1768,53 @@ impl Era {
         era
     }
 
-    pub fn from_kanji(_kanji: &str) -> Result<Self, &'static str> {
-        unimplemented!()
+    pub fn from_kanji(kanji: &str) -> Result<Self, &'static str> {
+        let mut kanji_iter = kanji.chars();
+        let length = kanji_iter.clone().count();
+        let mut formatted_kanji = "".to_string();
+        for _ in 0..length {
+            let current = kanji_iter.next().unwrap();
+            if is_kanji(current) {
+                formatted_kanji.push(current.clone());
+            }
+        }
+
+        if ERAS.contains_key(formatted_kanji.as_str()) {
+            let era = ERAS.get(formatted_kanji.as_str()).unwrap().clone();
+            Ok(era)
+        }
+        else {
+            Err("Not a valid era!")
+        }
+    }
+
+    pub fn from_georgian_year(year: u32) -> Result<Vec<Self>, &'static str> {
+        if year < 645 {
+            Err("There are no official eras prior to 645")   
+        }
+        else if year > 654 && year < 686 {
+            Err("There was no official era between 656 and 685")
+        }
+        else if year > 686 && year < 701 {
+            Err("There was no official era between 687 and 700")
+        }
+        else if year > 2019 {
+            Err("The era set to begin when the Heisei era ends has not been named yet")
+        }
+        else {
+            let mut eras : Vec<Era> = Vec::new();
+            for i in 0..ERA_VEC.len() {
+                if ERA_VEC[i].georgian_start_year() <= year {
+                    if ERA_VEC[i].georgian_end_year() >= year {
+                        eras.push(ERA_VEC[i].clone());
+                    }
+                }
+                else {
+                    break;
+                }
+            }
+            Ok(eras)
+        }
     }
 
     pub fn from_georgian(_date: NaiveDate) -> Result<Self, &'static str> {
@@ -1524,11 +1828,37 @@ impl Era {
     pub fn georgian_start_year(&self) -> u32 {
         self.start_georgian.year() as u32
     }
+
+    pub fn georgian_end_year(&self) -> u32 {
+        self.end_georgian.year() as u32
+    }
+
+    pub fn end_year(&self) -> u32 {
+        self.end_year
+    }
+
+    pub fn kanji(&self) -> String {
+        self.kanji.clone()
+    }
 }
 
 impl EraYear {
-    pub fn new() {
-        unimplemented!()
+    pub fn new(era: Era, year: u32) -> Result<Self, &'static str> {
+        if ERAS.contains_key(&era.kanji().as_str()) {
+            if year > era.end_year() || year == 0 {
+                Err("Not a valid year for this era!")
+            }
+            else {
+                let era_year = EraYear {
+                    era: era,
+                    year: year,
+                };
+                Ok(era_year)
+            }
+        }
+        else {
+            Err("Not a valid era!")
+        }
     }
 
     pub fn from_georgian(_date: NaiveDate) -> Result<Self, &'static str> {
