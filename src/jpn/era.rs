@@ -1,7 +1,7 @@
 // This is part of Jikan
 // See README.md for details
 
-use chrono::prelude::*;
+use chrono::{NaiveDate, Datelike};
 use std::collections::HashMap;
 
 pub fn is_kanji(character: char) -> bool {
@@ -1303,7 +1303,7 @@ lazy_static! {
         m.insert("平治", Era::new("Heiji", "平治", "へいじ", "Heiji", "Heizi", NaiveDate::from_ymd(1159, 5, 16), NaiveDate::from_ymd(1160, 2, 25), 2, Court::Unified, None, None));
         m.insert("永暦", Era::new("Eiryaku", "永暦", "えいりゃく", "Eiryaku", "Eiryaku", NaiveDate::from_ymd(1160, 2, 25), NaiveDate::from_ymd(1161, 10, 1), 2, Court::Unified, None, None));
         m.insert("応保", Era::new("Ouhou", "応保", "おうほう", "Ōhō", "Ôhô", NaiveDate::from_ymd(1161, 10, 1), NaiveDate::from_ymd(1163, 5, 11), 3, Court::Unified, None, None));
-        m.insert("", Era::new("Choukan", "長寛", "ちょうかん", "Chōkan", "Tyôkan", NaiveDate::from_ymd(1163, 5, 11), NaiveDate::from_ymd(1165, 6, 21), 3, Court::Unified, None, None));
+        m.insert("長寛", Era::new("Choukan", "長寛", "ちょうかん", "Chōkan", "Tyôkan", NaiveDate::from_ymd(1163, 5, 11), NaiveDate::from_ymd(1165, 6, 21), 3, Court::Unified, None, None));
         m.insert("永万", Era::new("Eiman", "永万", "えいまん", "Eiman", "Eiman", NaiveDate::from_ymd(1165, 6, 21), NaiveDate::from_ymd(1166, 9, 30), 2, Court::Unified, None, None));
         m.insert("仁安", Era::new("Nin'an", "仁安", "にんあん", "Nin'an", "Nin'an", NaiveDate::from_ymd(1166, 9, 30), NaiveDate::from_ymd(1169, 5, 13), 4, Court::Unified, None, None));
         m.insert("嘉応", Era::new("Kaou", "嘉応", "かおう", "Kaō", "Kaô", NaiveDate::from_ymd(1169, 5, 13), NaiveDate::from_ymd(1171, 5, 19), 3, Court::Unified, None, None));
@@ -1335,7 +1335,7 @@ lazy_static! {
         m.insert("嘉禎", Era::new("Katei", "嘉禎", "かてい", "Katei", "Katei", NaiveDate::from_ymd(1235, 11, 8), NaiveDate::from_ymd(1239, 1, 6), 4, Court::Unified, None, None));
         m.insert("暦仁", Era::new("Ryakunin", "暦仁", "りゃくにん", "Ryakunin", "Ryakunin", NaiveDate::from_ymd(1239, 1, 6), NaiveDate::from_ymd(1239, 3, 20), 2, Court::Unified, None, None));
         m.insert("延応", Era::new("En'ou", "延応", "えんおう", "En'ō", "En'ô", NaiveDate::from_ymd(1239, 3, 20), NaiveDate::from_ymd(1240, 8, 12), 2, Court::Unified, None, None));
-        m.insert("延応", Era::new("Ninji", "仁治", "にんじ", "Ninji", "Ninzi", NaiveDate::from_ymd(1240, 8, 12), NaiveDate::from_ymd(1243, 3, 25), 4, Court::Unified, None, None));
+        m.insert("仁治", Era::new("Ninji", "仁治", "にんじ", "Ninji", "Ninzi", NaiveDate::from_ymd(1240, 8, 12), NaiveDate::from_ymd(1243, 3, 25), 4, Court::Unified, None, None));
         m.insert("寛元", Era::new("Kangen", "寛元", "かんげん", "Kangen", "Kangen", NaiveDate::from_ymd(1243, 3, 25), NaiveDate::from_ymd(1247, 4, 12), 5, Court::Unified, None, None));
         m.insert("宝治", Era::new("Houji", "宝治", "ほうじ", "Hōji", "Hôzi", NaiveDate::from_ymd(1247, 4, 12), NaiveDate::from_ymd(1249, 5, 9), 3, Court::Unified, None, None));
         m.insert("建長", Era::new("Kenchou", "建長", "けんちょう", "Kenchō", "Kentyô", NaiveDate::from_ymd(1249, 5, 9), NaiveDate::from_ymd(1256, 10, 31), 8, Court::Unified, None, None));
@@ -1721,7 +1721,7 @@ lazy_static! {
     };
 }
 
-#[derive(Clone, Eq, PartialEq, Hash)]
+#[derive(Clone, Eq, PartialEq, Debug, Hash)]
 pub enum Court {
     Unified,
     North,
@@ -1729,7 +1729,7 @@ pub enum Court {
     Both,
 }
 
-#[derive(Clone, Eq, PartialEq, Hash)]
+#[derive(Clone, Eq, PartialEq, Debug, Hash)]
 pub struct Era {
     kana_spelling: String,
     kanji: String,
@@ -1744,10 +1744,18 @@ pub struct Era {
     alt_end_year: Option<u32>,
 }
 
-#[derive(Clone, Eq, PartialEq)]
+#[derive(Clone, Eq, PartialEq, Debug, Hash)]
 pub struct EraYear {
     era: Era,
     year: u32,
+    court: Court,
+}
+
+#[derive(Clone, Eq, PartialEq, Debug, Hash)]
+pub struct Date {
+    day: u32,
+    month: u32,
+    year: EraYear,
 }
 
 impl Era {
@@ -1817,12 +1825,42 @@ impl Era {
         }
     }
 
-    pub fn from_georgian(_date: NaiveDate) -> Result<Self, &'static str> {
-        unimplemented!()
+    pub fn from_georgian(date: NaiveDate) -> Result<Vec<Self>, &'static str> {
+        if date.year() < 1 {
+            Err("There are no official eras prior to 645")
+        }
+        else {
+            let year = date.year() as u32;
+
+            if year < 645 {
+                Err("There are no official eras prior to 645")   
+            }
+            else if year > 654 && year < 686 {
+                Err("There was no official era between 656 and 685")
+            }
+            else if year > 686 && year < 701 {
+                Err("There was no official era between 687 and 700")
+            }
+            else if year > 2019 {
+                Err("The era set to begin when the Heisei era ends has not been named yet")
+            }
+            else {
+                let possible_eras = Era::from_georgian_year(year).unwrap();
+                let mut eras : Vec<Era> = Vec::new();
+
+                for i in 0..possible_eras.len() {
+                    if date.ge(&possible_eras[i].gsd()) && date.le(&possible_eras[i].ged()) {
+                        eras.push(possible_eras[i].clone());
+                    }
+                }
+                Ok(eras)
+            }
+        }
     }
 
-    pub fn from_georgian_ymd(_year: u32, _month: u32, _day: u32) -> Result<Self, &'static str> {
-        unimplemented!()
+    pub fn from_gymd(year: i32, month: u32, day: u32) -> Result<Vec<Self>, &'static str> {
+        let date = NaiveDate::from_ymd(year, month, day);
+        Era::from_georgian(date)
     }
 
     pub fn georgian_start_year(&self) -> u32 {
@@ -1840,18 +1878,104 @@ impl Era {
     pub fn kanji(&self) -> String {
         self.kanji.clone()
     }
+
+    //georgian start date
+    pub fn gsd(&self) -> NaiveDate {
+        self.start_georgian.clone()
+    }
+
+    //georgian end date
+    pub fn ged(&self) -> NaiveDate {
+        self.end_georgian.clone()
+    }
+
+    pub fn has_alt_end_date(&self) -> bool {
+        self.alt_end_georgian.is_some()
+    }
+
+    //alt georgian end date
+    //panics if fails
+    pub fn gaed(&self) -> NaiveDate {
+        if self.has_alt_end_date() {
+            self.alt_end_georgian.unwrap().clone()
+        }
+        else {
+            panic!("No alternative end date exists for this era!");
+        }
+    }
+
+    //alt georgian end date with option
+    pub fn gaed_option(&self) -> Option<NaiveDate> {
+        self.alt_end_georgian.clone()
+    }
+
+    //alt georgian end year
+    //panics if fails
+    pub fn aey(&self) -> u32 {
+        if self.has_alt_end_date() {
+            self.alt_end_year.unwrap().clone()
+        }
+        else {
+            panic!("No alternate end year exists for this era!");
+        }
+    }
+
+    //alt georgian end year with option
+    pub fn aey_option(&self) -> Option<u32> {
+        self.alt_end_year.clone()
+    }
+
+    pub fn court(&self) -> Court {
+        self.court.clone()
+    }
+
+    pub fn hepburn(&self) -> String {
+        self.hepburn.clone()
+    }
+
+    pub fn iso_3602(&self) -> String {
+        self.iso_3602.clone()
+    }
+
+    pub fn kana_spelling(&self) -> String {
+        self.kana_spelling.clone()
+    }
+
+    pub fn hiragana(&self) -> String {
+        self.hiragana.clone()
+    }
 }
 
 impl EraYear {
     pub fn new(era: Era, year: u32) -> Result<Self, &'static str> {
         if ERAS.contains_key(&era.kanji().as_str()) {
-            if year > era.end_year() || year == 0 {
+            if Era::from_kanji(&era.kanji()).unwrap() != era {
+                Err("Not a valid era!")
+            }
+            else if year > era.end_year() || year == 0 {
                 Err("Not a valid year for this era!")
             }
-            else {
+            else if era.kanji() == "明徳" && year < 4 {
                 let era_year = EraYear {
                     era: era,
                     year: year,
+                    court: Court::North,
+                };
+                Ok(era_year)
+            }
+            else if era.has_alt_end_date() && year > era.aey() {
+                let era_year = EraYear {
+                    era: era,
+                    year: year,
+                    court: Court::North,
+                };
+                Ok(era_year)
+            }
+            else {
+                let era_year = EraYear {
+                    era: era.clone(),
+                    year: year,
+                    court: era.court(),
                 };
                 Ok(era_year)
             }
@@ -1861,11 +1985,185 @@ impl EraYear {
         }
     }
 
-    pub fn from_georgian(_date: NaiveDate) -> Result<Self, &'static str> {
-        unimplemented!()
+    pub fn from_georgian(date: NaiveDate) -> Result<Vec<Self>, &'static str> {
+        if date.lt(&NaiveDate::from_ymd(645, 7, 20)) {
+            Err("There are no official eras prior to July 20th, 645!")
+        }
+        else if date.gt(&NaiveDate::from_ymd(654, 11, 27)) && date.lt(&NaiveDate::from_ymd(686, 8, 17)) {
+            Err("There is no official era between November 28th, 654 and August 16th, 686!")
+        }
+        else if date.gt(&NaiveDate::from_ymd(686, 10, 4)) && date.lt(&NaiveDate::from_ymd(701, 5, 7)) {
+            Err("There is no official era between October 5th, 686 and May 6th, 701!")
+        }
+        else if date.gt(&NaiveDate::from_ymd(2019, 4, 30)) {
+            Err("The era after Heisei has yet to be named!")
+        }
+        else {
+            let dy = date.year() as u32;
+            let eras = Era::from_georgian(date).unwrap();
+            let mut era_years : Vec<EraYear> = Vec::new();
+            for i in 0..eras.len() {
+                if date.ge(&eras[i].gsd()) && date.le(&eras[i].ged()) {
+                    let mut y = 1;
+                    let mut current = eras[i].georgian_start_year();
+                    let gsd = eras[i].gsd();
+                    let mut gy = 0;
+
+                    if gsd.year() <= 1872 {
+                        let year1lny = LUNAR_NEW_YEAR.get(&current).unwrap().clone();
+
+                        if gsd.lt(&year1lny) && date.ge(&year1lny) {
+                            y += 1;
+                        }
+                        current += 1;
+
+                        while current <= dy && current <= 1872 {
+                            let lny = LUNAR_NEW_YEAR.get(&current).unwrap().clone();
+
+                            if date.ge(&lny) {
+                                y += 1;
+                            }
+                            current += 1;
+                        }
+                        //in case the era of the date has dates in both traditional and Georgian calendar formats
+                        if current <= dy {
+                            gy = dy - current + 1;
+                        }
+                    }
+                    else {
+                        gy = dy - eras[i].georgian_start_year();
+                    }
+                    y += gy;
+                    let ey = EraYear::new(eras[i].clone(), y);
+                    era_years.push(ey.unwrap());
+                }
+            }
+            Ok(era_years)
+        }
     }
 
-    pub fn interate(_years: u32) -> Result<Self, &'static str> {
-        unimplemented!()
+    pub fn to_georgian_year(&self) -> Vec<u32> {
+        let gsd = self.era.gsd();
+        let ged = self.era.ged();
+        let end_year = self.era.end_year();
+        let mut y = gsd.year() as u32;
+        let mut m : HashMap<u32, Vec<u32>> = HashMap::new();
+
+        for i in 0..end_year {
+            let mut y1 = y + i;
+
+            if y1 <= 1872 {
+                let lny = LUNAR_NEW_YEAR.get(&y).unwrap();
+
+                if y1 == y {
+                    m.insert(i + 1, vec![y1]);
+                    if gsd.lt(&lny) {
+                        y = y - 1;
+                    } 
+                }
+                else {
+                    if ged.lt(&lny) {
+                        m.insert(i + 1, vec![y1]);
+                    }
+                    else {
+                        m.insert(i + 1, vec![y1, y1 + 1]);
+                    }
+                }
+            }
+            else {
+                m.insert(i + 1, vec![y1]);
+            }
+        }
+
+        m.get(&self.year()).unwrap().clone()
+    }
+
+    pub fn era(&self) -> Era {
+        self.era.clone()
+    }
+
+    pub fn year(&self) -> u32 {
+        self.year
+    }
+}
+
+impl Date {
+    pub fn new(year: EraYear, month: u32, day: u32) -> Self {
+        let date = Date {
+            year: year,
+            month: month,
+            day: day,
+        };
+        date
+    }
+
+    pub fn from_georgian(gdate: NaiveDate) -> Result<Vec<Self>, &'static str> {
+        if gdate.lt(&NaiveDate::from_ymd(645, 7, 20)) {
+            Err("There are no official eras prior to July 20th, 645!")
+        }
+        else if gdate.gt(&NaiveDate::from_ymd(654, 11, 27)) && gdate.lt(&NaiveDate::from_ymd(686, 8, 17)) {
+            Err("There is not an official era between November 28th, 654 and August 16th, 686!")
+        }
+        else if gdate.gt(&NaiveDate::from_ymd(686, 10, 4)) && gdate.lt(&NaiveDate::from_ymd(701, 5, 7)) {
+            Err("There is not an official era between October 5th, 686 and May 6th, 701!")
+        }
+        else if gdate.gt(&NaiveDate::from_ymd(2019, 4, 30)) {
+            Err("The era after Heisei has yet to be named!")
+        }
+        else {
+            let era_years : Vec<EraYear> = EraYear::from_georgian(gdate).unwrap();
+            let mut era_dates : Vec<Date> = Vec::new();
+
+            for i in 0..era_years.len() {
+                let era_date = Date::new(era_years[i].clone(), gdate.month(), gdate.day());
+                era_dates.push(era_date);
+            }
+            Ok(era_dates)
+        }
+    }
+
+    pub fn to_georgian(&self) -> NaiveDate {
+        let era = self.era_year().era().clone();
+        let end_yn = self.era_year().year();
+        let gsd = era.gsd();
+        let mut y = gsd.year() as u32;
+        let mut yn = 1;
+
+        if y <= 1872 {
+            let lny1 = LUNAR_NEW_YEAR.get(&y).unwrap();
+            if gsd.lt(&lny1) {
+                yn += 1;
+            }
+
+            for _ in yn..end_yn {
+                y += 1;
+            }
+
+            if y <= 1872 {
+                let test_date = NaiveDate::from_ymd(y as i32, self.month, self.day);
+                let lny = LUNAR_NEW_YEAR.get(&y).unwrap();
+                if test_date.lt(&lny) {
+                    y += 1;
+                }
+            }
+        }
+        else {
+            y += end_yn;
+            y = y - 1;
+        }
+
+        NaiveDate::from_ymd(y as i32, self.month, self.day)
+    }
+
+    pub fn month(&self) -> u32 {
+        self.month
+    }
+
+    pub fn day(&self) -> u32 {
+        self.day
+    }
+
+    pub fn era_year(&self) -> EraYear {
+        self.year.clone()
     }
 }
